@@ -8,7 +8,7 @@ import Timecode from "./Timecode";
 import styles from "./Nav.module.css";
 
 const LINKS = [
-  { label: "Work", href: "/#work" },
+  { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "Studio", href: "/#studio" },
   { label: "Contact", href: "/#contact" },
@@ -17,6 +17,7 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Hide the bar on scroll-down, reveal on scroll-up.
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Nav() {
     function onScroll() {
       const y = window.scrollY;
       setHidden(y > last && y > 220 && !open);
+      setScrolled(y > 30);
       last = y;
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -49,7 +51,11 @@ export default function Nav() {
 
   return (
     <>
-      <header className={`${styles.nav} ${hidden ? styles.up : ""}`}>
+      <header
+        className={`${styles.nav} ${hidden ? styles.up : ""} ${
+          scrolled ? styles.solid : ""
+        }`}
+      >
         <div className={styles.row}>
           <Link href="/" className={styles.brand} aria-label="The Virtuose home">
             <span className={styles.mark}>The Virtuose</span>

@@ -1,0 +1,191 @@
+.page {
+  padding-top: clamp(7rem, 16vh, 11rem);
+  padding-bottom: var(--space-3xl);
+  min-height: 100svh;
+}
+
+/* --- Header ----------------------------------------------------------- */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.title {
+  font-size: var(--display);
+  color: var(--bone);
+  max-width: 14ch;
+}
+.lede {
+  max-width: 52ch;
+  color: var(--bone-dim);
+  font-size: var(--step-1);
+  line-height: 1.55;
+}
+
+/* --- Controls / filters ---------------------------------------------- */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--hair);
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to bottom, var(--void) 70%, transparent);
+  padding-top: 1.2rem;
+  z-index: 20;
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.filter {
+  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+  border: 1px solid var(--hair);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  color: var(--ash);
+  transition: color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+.filter:hover {
+  color: var(--bone);
+  border-color: var(--hair-strong);
+}
+.filterOn {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--void);
+}
+.count {
+  font-size: var(--step--1);
+  color: var(--ash);
+}
+
+/* --- Grid ------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+.card {
+  min-width: 0;
+}
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  transition: border-color var(--dur) var(--ease-out);
+}
+.cardLink:hover .thumb {
+  border-color: var(--hair-strong);
+}
+.thumb > :global(*) {
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.cardLink:hover .thumb > :global(*) {
+  transform: scale(1.04);
+}
+.idx {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  z-index: 4;
+  font-size: var(--step--1);
+  color: var(--bone);
+  mix-blend-mode: difference;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  transition: transform var(--dur) var(--ease-out);
+}
+.cardLink:hover .name {
+  transform: translateX(0.35rem);
+}
+.client {
+  color: var(--bone-dim);
+  font-size: var(--step-0);
+}
+.tags {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.3rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--hair);
+}
+.year {
+  font-size: var(--step--1);
+  color: var(--ash);
+}
+
+/* --- Bottom CTA ------------------------------------------------------- */
+.cta {
+  margin-top: clamp(4rem, 10vw, 8rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--hair);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ctaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.ctaTitle {
+  font-size: var(--display);
+  color: var(--bone);
+  transition: transform var(--dur) var(--ease-out);
+}
+.ctaRow:hover .ctaTitle {
+  transform: translateX(0.6rem);
+}
+.ctaArrow {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--bone);
+  transition: transform var(--dur) var(--ease-out);
+}
+.ctaRow:hover .ctaArrow {
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

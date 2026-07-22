@@ -12,7 +12,7 @@ export default function ContactCTA() {
     <section className={`${styles.wrap} section`} id="contact">
       <div className="shell">
         <div className={styles.top}>
-          <span className="label">Next project</span>
+          <span className="label">Get in touch</span>
           <span className={`${styles.tc} mono tnum`}>
             <Timecode />
           </span>

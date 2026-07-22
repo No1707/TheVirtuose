@@ -50,7 +50,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: EASE, delay: 0.9 }}
         >
-          <a href="#work" className={styles.cta} data-cursor="play">
+          <a href="/work" className={styles.cta} data-cursor="play">
             <span className={styles.ctaGlyph} aria-hidden="true">
               ▸
             </span>

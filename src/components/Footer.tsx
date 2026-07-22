@@ -15,7 +15,7 @@ export default function Footer() {
           <nav className={styles.cols} aria-label="Footer">
             <div className={styles.col}>
               <span className={`${styles.colHead} label`}>Index</span>
-              <Link href="/#work">Work</Link>
+              <Link href="/work">Work</Link>
               <Link href="/#services">Services</Link>
               <Link href="/#studio">Studio</Link>
               <Link href="/#contact">Contact</Link>

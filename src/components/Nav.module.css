@@ -12,6 +12,30 @@
   transform: translateY(-140%);
 }
 
+/* Once scrolled off the hero, drop the blend trick and lay a soft scrim +
+   blur behind the bar so its text never collides with body content. */
+.nav.solid {
+  mix-blend-mode: normal;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 11, 0.88) 0%,
+    rgba(10, 10, 11, 0.72) 55%,
+    rgba(10, 10, 11, 0) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.nav.solid .mark,
+.nav.solid .link,
+.nav.solid .tc,
+.nav.solid .meta,
+.nav.solid .toggle .label {
+  color: var(--bone);
+}
+.nav.solid .rec {
+  background: var(--bone);
+}
+
 .row {
   display: flex;
   align-items: center;

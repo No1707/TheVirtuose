@@ -61,6 +61,7 @@
   --z-grain: 90;
   --z-nav: 70;
   --z-frame: 60;
+  --z-modal: 95; /* above grain/nav, below the custom cursor */
   --z-cursor: 100;
   --z-preloader: 120;
 }

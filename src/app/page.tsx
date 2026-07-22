@@ -2,7 +2,6 @@ import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
-import SelectedWork from "@/components/SelectedWork";
 import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Process from "@/components/Process";
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <Manifesto />
         <Services />
-        <SelectedWork />
         <Marquee />
         <About />
         <Process />
