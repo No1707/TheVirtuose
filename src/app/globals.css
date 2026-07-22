@@ -221,6 +221,12 @@ button {
   border: 0;
 }
 
+/* --- Custom cursor: suppress the native one while it's active ---------- */
+html.cursor-hidden,
+html.cursor-hidden * {
+  cursor: none !important;
+}
+
 /* --- Reduced motion --------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,

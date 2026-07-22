@@ -20,12 +20,15 @@ export default function Cursor() {
     ).matches;
     if (!fine) return;
 
+    // Hide the native cursor only while the custom one is driving.
+    document.documentElement.classList.add("cursor-hidden");
+
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const cur = { ...pos };
     let raf = 0;
 
     function render() {
-      const speed = reduce ? 1 : 0.18;
+      const speed = reduce ? 1 : 0.3;
       cur.x += (pos.x - cur.x) * speed;
       cur.y += (pos.y - cur.y) * speed;
       if (dot.current) {
@@ -57,6 +60,7 @@ export default function Cursor() {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
+      document.documentElement.classList.remove("cursor-hidden");
     };
   }, []);
 

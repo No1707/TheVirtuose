@@ -46,7 +46,11 @@ const SERVICES: Service[] = [
 ];
 
 export default function Services() {
-  const [active, setActive] = useState(0);
+  // `active` drives the row highlight and clears on mouse-out.
+  const [active, setActive] = useState<number | null>(null);
+  // `preview` keeps the last-hovered channel on screen so the preview column
+  // never goes blank.
+  const [preview, setPreview] = useState(0);
 
   return (
     <section className={`${styles.wrap} section hair-top`} id="services">
@@ -62,8 +66,16 @@ export default function Services() {
               <li key={s.title}>
                 <motion.button
                   className={`${styles.row} ${active === i ? styles.on : ""}`}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
+                  onMouseEnter={() => {
+                    setActive(i);
+                    setPreview(i);
+                  }}
+                  onMouseLeave={() => setActive(null)}
+                  onFocus={() => {
+                    setActive(i);
+                    setPreview(i);
+                  }}
+                  onBlur={() => setActive(null)}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "0px 0px -10% 0px" }}
@@ -91,14 +103,14 @@ export default function Services() {
                 <div
                   key={s.title}
                   className={`${styles.preview} ${
-                    active === i ? styles.previewOn : ""
+                    preview === i ? styles.previewOn : ""
                   }`}
                 >
                   <Screen tone={s.tone} label={s.runtime} />
                 </div>
               ))}
               <span className={`${styles.previewTag} mono`}>
-                {SERVICES[active].title}
+                {SERVICES[preview].title}
               </span>
             </div>
           </div>
