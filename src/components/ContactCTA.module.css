@@ -1,0 +1,118 @@
+.wrap {
+  padding-block: var(--space-4xl);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--hair);
+}
+.tc {
+  font-size: var(--step--1);
+  color: var(--ash);
+}
+
+.title {
+  font-size: var(--display-lg);
+  color: var(--bone);
+  margin-top: clamp(2rem, 6vw, 4rem);
+  margin-bottom: clamp(2rem, 6vw, 4rem);
+}
+.lineWrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.line {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+.lede {
+  max-width: 34ch;
+  color: var(--bone-dim);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.emailBtn {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.4rem 1rem;
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--hair-strong);
+  border-radius: 4px;
+  transition: background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.emailBtn:hover {
+  background: var(--surface);
+  border-color: var(--bone);
+}
+.emailLabel {
+  grid-column: 1;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.email {
+  grid-column: 1;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--bone);
+  letter-spacing: -0.01em;
+}
+.arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  font-size: 1.6rem;
+  color: var(--bone);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.emailBtn:hover .arrow {
+  transform: translate(4px, -4px);
+}
+
+.socials {
+  display: flex;
+  gap: 2.5rem;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--bone);
+}
+.social:hover .handle {
+  color: var(--bone);
+}
+.handle {
+  color: var(--ash);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}

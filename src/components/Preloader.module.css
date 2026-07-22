@@ -1,0 +1,67 @@
+.pre {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  text-align: center;
+}
+
+.brand {
+  color: var(--ash);
+}
+
+.tag {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+
+.counter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  line-height: 1;
+  color: var(--bone);
+}
+
+.pct {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ash);
+  margin-bottom: 0.6rem;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--hair);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  background: var(--bone);
+  transition: transform 0.1s linear;
+}

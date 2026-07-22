@@ -1,0 +1,172 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding: clamp(1rem, 2.4vw, 1.9rem) 0;
+  transition: transform var(--dur) var(--ease-out);
+  mix-blend-mode: difference;
+}
+.nav.up {
+  transform: translateY(-140%);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-inline: var(--gutter);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1;
+}
+.mark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+}
+.meta {
+  color: var(--bone);
+  opacity: 0.55;
+}
+
+.links {
+  display: flex;
+  gap: clamp(1.2rem, 2.6vw, 2.6rem);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.link {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--bone);
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.link:hover {
+  opacity: 1;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.tc {
+  font-size: var(--step--1);
+  color: var(--bone);
+  opacity: 0.7;
+}
+.rec {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bone);
+  animation: blink 2s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0.2; }
+}
+
+.toggle {
+  display: none;
+}
+.toggle .label {
+  color: var(--bone);
+}
+
+/* --- Overlay menu ----------------------------------------------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-nav) - 1);
+  background: var(--void);
+  display: flex;
+}
+.menuInner {
+  margin-top: auto;
+  width: 100%;
+  padding: var(--gutter);
+  padding-bottom: clamp(2rem, 6vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+.menuList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.menuLineWrap {
+  display: block;
+  overflow: hidden;
+}
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 12vw, 6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.menuLink:hover {
+  color: var(--ash);
+}
+.menuIndex {
+  font-size: 0.9rem;
+  color: var(--ash);
+  letter-spacing: 0.1em;
+}
+.menuFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--hair);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+.footLink {
+  color: var(--bone);
+}
+.footSocials {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--ash);
+}
+.footSocials a:hover {
+  color: var(--bone);
+}
+
+@media (max-width: 860px) {
+  .links {
+    display: none;
+  }
+  .toggle {
+    display: block;
+    min-height: 44px;
+    display: grid;
+    place-items: center;
+  }
+  .tc {
+    display: none;
+  }
+}

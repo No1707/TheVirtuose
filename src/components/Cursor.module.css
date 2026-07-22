@@ -1,0 +1,68 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--flare);
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: width var(--dur-fast) var(--ease-out),
+    height var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.on {
+  opacity: 1;
+}
+
+.link {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  background: transparent;
+  border: 1px solid var(--flare);
+  mix-blend-mode: difference;
+}
+
+.play {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  background: var(--bone);
+  mix-blend-mode: normal;
+}
+
+.play .play {
+  display: none;
+}
+
+.cursor .play {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--void);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.cursor.play .play {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hide on coarse pointers entirely. */
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

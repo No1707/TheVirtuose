@@ -1,0 +1,234 @@
+/* =========================================================================
+   THE VIRTUOSE — Design tokens & global styles
+   Warm cinematic monochrome. The edit bay, rendered as a website.
+   ========================================================================= */
+
+:root {
+  /* --- Palette: warm monochrome -------------------------------------- */
+  --void: #0a0a0b;          /* base — the dark of a screening room */
+  --void-2: #0d0d0f;        /* subtle vertical shift */
+  --surface: #131315;       /* elevated panels */
+  --surface-2: #1a1a1d;     /* hover surface */
+  --bone: #f2efea;          /* projector-warm off-white — primary text */
+  --bone-dim: #d8d4cc;      /* slightly recessed text */
+  --ash: #8b8b90;           /* secondary / captions */
+  --ash-dim: #5c5c61;       /* tertiary / disabled */
+  --flare: #ede6d8;         /* the only "accent": warm light, used sparingly */
+  --hair: rgba(242, 239, 234, 0.1);   /* hairline borders */
+  --hair-soft: rgba(242, 239, 234, 0.06);
+  --hair-strong: rgba(242, 239, 234, 0.18);
+  --scrim: rgba(6, 6, 7, 0.72);
+
+  /* --- Typography ----------------------------------------------------- */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Fluid type scale (min 375px → max 1440px) */
+  --step--1: clamp(0.79rem, 0.77rem + 0.09vw, 0.84rem);
+  --step-0:  clamp(0.95rem, 0.92rem + 0.13vw, 1.05rem);
+  --step-1:  clamp(1.13rem, 1.06rem + 0.32vw, 1.35rem);
+  --step-2:  clamp(1.35rem, 1.2rem + 0.66vw, 1.9rem);
+  --step-3:  clamp(1.62rem, 1.35rem + 1.2vw, 2.75rem);
+  --step-4:  clamp(1.94rem, 1.46rem + 2.1vw, 4rem);
+  --display: clamp(2.8rem, 1.2rem + 7vw, 8.5rem);
+  --display-lg: clamp(3.4rem, 0.6rem + 12vw, 13rem);
+
+  /* --- Space scale (spacious, marketing cadence) --------------------- */
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6.5rem;
+  --space-3xl: 10rem;
+  --space-4xl: 14rem;
+
+  /* --- Structure ------------------------------------------------------ */
+  --frame: clamp(0.75rem, 0.4rem + 1.4vw, 1.5rem);   /* viewfinder inset */
+  --gutter: clamp(1.25rem, 0.6rem + 2.6vw, 3.25rem); /* content padding */
+  --measure: 62ch;
+  --max: 1560px;
+
+  /* --- Motion --------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);      /* film-smooth deceleration */
+  --ease-inout: cubic-bezier(0.83, 0, 0.17, 1);
+  --dur-fast: 0.28s;
+  --dur: 0.6s;
+  --dur-slow: 1.1s;
+
+  --z-grain: 90;
+  --z-nav: 70;
+  --z-frame: 60;
+  --z-cursor: 100;
+  --z-preloader: 120;
+}
+
+/* --- Reset ----------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* Lenis handles smoothing */
+  background: var(--void);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--bone);
+  background: var(--void);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "cv01";
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--bone);
+  color: var(--void);
+}
+
+/* --- Typography primitives ------------------------------------------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+.serif {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-feature-settings: "tnum", "zero";
+}
+
+/* eyebrow / label — the "equipment readout" voice */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ash);
+  font-weight: 400;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* --- Layout helpers --------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--space-3xl);
+}
+
+.hair-top {
+  border-top: 1px solid var(--hair);
+}
+
+/* --- Accessibility ---------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--bone);
+  color: var(--void);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  border-radius: 2px;
+}
+.skip-link:focus {
+  left: var(--gutter);
+  top: var(--gutter);
+}
+
+:focus-visible {
+  outline: 2px solid var(--flare);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Reduced motion --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

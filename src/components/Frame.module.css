@@ -1,0 +1,48 @@
+.frame {
+  position: fixed;
+  inset: var(--frame);
+  pointer-events: none;
+  z-index: var(--z-frame);
+  border: 1px solid var(--hair-soft);
+  mix-blend-mode: screen;
+}
+
+.tick {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--hair-strong);
+  border-style: solid;
+  border-width: 0;
+}
+
+.tl {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.tr {
+  top: -1px;
+  right: -1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+.br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+@media (max-width: 640px) {
+  .frame {
+    display: none;
+  }
+}

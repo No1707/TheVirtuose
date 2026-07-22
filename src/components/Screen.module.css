@@ -1,0 +1,92 @@
+.screen {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--void-2);
+  isolation: isolate;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.15) contrast(1.05);
+}
+
+/* --- Animated monochrome placeholder --------------------------------- */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      140% 120% at 30% 20%,
+      hsl(var(--tone, 0deg) 6% 20%) 0%,
+      hsl(var(--tone, 0deg) 5% 9%) 45%,
+      #060607 100%
+    );
+}
+
+.sweep {
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(242, 239, 234, 0.14) 48%,
+    rgba(242, 239, 234, 0.02) 52%,
+    transparent 70%
+  );
+  transform: translateX(-40%);
+  animation: sweep 7s var(--ease-inout) infinite;
+}
+
+.scan {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.14) 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-45%); }
+  100% { transform: translateX(45%); }
+}
+
+/* --- Cinemascope mattes ---------------------------------------------- */
+.matte {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 7%;
+  background: #060607;
+  z-index: 2;
+}
+.top { top: 0; }
+.bottom { bottom: 0; }
+
+.label {
+  position: absolute;
+  left: 0.9rem;
+  bottom: calc(7% + 0.7rem);
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  mix-blend-mode: difference;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep {
+    animation: none;
+    opacity: 0.4;
+  }
+}
