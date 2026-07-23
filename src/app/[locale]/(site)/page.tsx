@@ -1,6 +1,5 @@
 import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
-import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import ContactCTA from "@/components/ContactCTA";
@@ -33,8 +32,7 @@ export default async function Home() {
       <Preloader />
       <main id="main">
         <Hero showreel={settings.showreel} />
-        <Manifesto />
-        <Services />
+        <Services previews={settings.servicePreviews} />
         {/* About and Contact read as one closing block: who you'd work with,
             then how to reach him. */}
         <About />

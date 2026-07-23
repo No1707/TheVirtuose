@@ -1,9 +1,11 @@
 import { defineField, defineType } from "sanity";
 
 /**
- * The only site-wide asset that changes often enough to be worth managing:
- * the looping showreel behind the homepage headline. Everything else (studio
- * figures, copy) is fixed in the code.
+ * Site-wide media managed by Alec:
+ *  - the looping hero showreel
+ *  - one short landscape clip per service, shown when a format is hovered on
+ *    the "What we cut" list. Each is optional; empty ones fall back to the
+ *    animated placeholder.
  */
 export const siteSettings = defineType({
   name: "siteSettings",
@@ -15,6 +17,31 @@ export const siteSettings = defineType({
       title: "Hero showreel",
       description:
         "The looping video behind the homepage headline. Keep it short (8–20s), quiet and light — it autoplays for every visitor.",
+      type: "videoAsset",
+    }),
+    defineField({
+      name: "advertisingPreview",
+      title: "Advertising — hover clip",
+      description:
+        "Short landscape clip shown when 'Advertising' is hovered. Optional. Keep it a few seconds, muted, light.",
+      type: "videoAsset",
+    }),
+    defineField({
+      name: "socialPreview",
+      title: "Social & Reels — hover clip",
+      description: "Short landscape clip for 'Social & Reels'. Optional.",
+      type: "videoAsset",
+    }),
+    defineField({
+      name: "brandPreview",
+      title: "Brand Films — hover clip",
+      description: "Short landscape clip for 'Brand Films'. Optional.",
+      type: "videoAsset",
+    }),
+    defineField({
+      name: "longFormPreview",
+      title: "Long Form & Podcast — hover clip",
+      description: "Short landscape clip for 'Long Form & Podcast'. Optional.",
       type: "videoAsset",
     }),
   ],

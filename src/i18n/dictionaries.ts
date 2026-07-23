@@ -74,7 +74,7 @@ const en = {
     title: "Successful collaborations are built on clear communication.",
     intro: "Hi, I'm Alec.",
     paragraphs: [
-      "I'm a French video editor now based in Andorra, with over seven years of experience creating content that helps brands and agencies grow.",
+      "I'm a French video editor now based in Andorra, with 5+ years of experience creating content that helps brands and agencies grow.",
       "Throughout my career, I've worked with agencies and SaaS companies across a wide range of formats, from performance ads and organic short-form content to podcasts, talking-head videos and social media campaigns. Over time, I naturally specialized in performance-focused creative, where every second of a video has a purpose.",
       "Today, my focus is on building long-term partnerships with agencies and brands. I enjoy becoming a seamless extension of a creative team, helping scale video production with consistency, reliability, and a deep understanding of each client's creative standards.",
       "I believe the best partnerships are built on trust, clear communication, and a shared commitment to producing great work. If that sounds like the way you like to work too, I'd love to hear from you.",
@@ -200,7 +200,7 @@ const fr: typeof en = {
     title: "Les collaborations réussies reposent sur une communication claire.",
     intro: "Bonjour, je suis Alec.",
     paragraphs: [
-      "Je suis un monteur vidéo français, désormais basé en Andorre, avec plus de sept ans d'expérience dans la création de contenus qui aident les marques et les agences à se développer.",
+      "Je suis un monteur vidéo français, désormais basé en Andorre, avec plus de 5 ans d'expérience dans la création de contenus qui aident les marques et les agences à se développer.",
       "Au fil de mon parcours, j'ai travaillé avec des agences et des entreprises SaaS sur une grande variété de formats : publicités à la performance, contenus courts organiques, podcasts, vidéos face caméra et campagnes pour les réseaux sociaux. Je me suis naturellement spécialisé dans le créatif orienté performance, où chaque seconde d'une vidéo a une raison d'être.",
       "Aujourd'hui, je me concentre sur des partenariats de long terme avec des agences et des marques. J'aime devenir le prolongement naturel d'une équipe créative et aider à faire passer la production vidéo à l'échelle, avec constance, fiabilité et une vraie compréhension des exigences créatives de chaque client.",
       "Je crois que les meilleurs partenariats reposent sur la confiance, une communication claire et une même exigence du travail bien fait. Si c'est aussi votre façon de travailler, écrivez-moi.",

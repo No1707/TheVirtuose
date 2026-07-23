@@ -10,7 +10,16 @@ import styles from "./Services.module.css";
 /** Tones are visual, not editorial, so they stay out of the dictionary. */
 const TONES = [12, 210, 26, 200];
 
-export default function Services() {
+interface Preview {
+  url?: string;
+  posterUrl?: string;
+}
+
+export default function Services({
+  previews = [],
+}: {
+  previews?: (Preview | null)[];
+}) {
   const { dict } = useI18n();
   const SERVICES = dict.services.items.map((s, i) => ({
     ...s,
@@ -53,12 +62,7 @@ export default function Services() {
                   transition={{ duration: 0.6, ease: EASE, delay: i * 0.06 }}
                   aria-expanded={active === i}
                 >
-                  <span className={`${styles.runtime} mono tnum`}>
-                    {s.runtime}
-                  </span>
                   <span className={`${styles.name} serif`}>{s.title}</span>
-                  <span className={styles.line}>{s.line}</span>
-                  <span className={styles.plus} aria-hidden="true" />
 
                   <div className={styles.detail}>
                     <p className={styles.body}>{s.body}</p>
@@ -77,7 +81,12 @@ export default function Services() {
                     preview === i ? styles.previewOn : ""
                   }`}
                 >
-                  <Screen tone={s.tone} label={s.runtime} />
+                  <Screen
+                    tone={s.tone}
+                    label={s.title}
+                    src={previews[i]?.url}
+                    poster={previews[i]?.posterUrl}
+                  />
                 </div>
               ))}
               <span className={`${styles.previewTag} mono`}>

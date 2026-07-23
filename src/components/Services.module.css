@@ -29,13 +29,7 @@
   position: relative;
   width: 100%;
   text-align: left;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    "runtime name line"
-    "detail detail detail";
-  align-items: baseline;
-  column-gap: clamp(1rem, 2.5vw, 2.5rem);
+  display: block;
   padding: clamp(1.5rem, 3vw, 2.2rem) 0;
   border-top: 1px solid var(--hair);
   transition: opacity var(--dur-fast) var(--ease-out);
@@ -48,14 +42,8 @@
   opacity: 1;
 }
 
-.runtime {
-  grid-area: runtime;
-  font-size: var(--step--1);
-  color: var(--ash);
-  padding-top: 0.5em;
-}
 .name {
-  grid-area: name;
+  display: block;
   font-family: var(--font-display);
   font-weight: 300;
   font-size: clamp(1.8rem, 5vw, 3.4rem);
@@ -67,21 +55,8 @@
 .row.on .name {
   transform: translateX(0.5rem);
 }
-.line {
-  grid-area: line;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--ash);
-  text-align: right;
-  padding-top: 0.6em;
-}
-
-.plus {
-  display: none;
-}
 
 .detail {
-  grid-area: detail;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -89,14 +64,17 @@
     opacity var(--dur) var(--ease-out);
 }
 .row.on .detail {
-  max-height: 10rem;
+  max-height: 12rem;
   opacity: 1;
 }
+/* Takes the mono/ash voice of the short lines it replaced. */
 .body {
-  max-width: 52ch;
-  color: var(--bone-dim);
-  font-size: var(--step-0);
-  line-height: 1.55;
+  max-width: 60ch;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.01em;
+  color: var(--ash);
+  line-height: 1.65;
   padding-top: 1.2rem;
 }
 
@@ -142,22 +120,9 @@
   .previewCol {
     display: none;
   }
-  .row {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "runtime line"
-      "name name"
-      "detail detail";
-    row-gap: 0.6rem;
-  }
-  .name {
-    padding-top: 0.4rem;
-  }
-  .line {
-    padding-top: 0;
-  }
+  /* Detail is always shown on touch — there is no hover. */
   .row .detail {
-    max-height: 12rem;
+    max-height: 14rem;
     opacity: 1;
   }
   .body {

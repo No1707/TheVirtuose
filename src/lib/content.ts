@@ -1,8 +1,24 @@
 import { client, SETTINGS_QUERY, WORKS_QUERY } from "@/sanity/client";
 import { works as sampleWorks, type Category, type Work } from "./works";
 
+export interface VideoRef {
+  url?: string;
+  posterUrl?: string;
+}
+
 export interface SiteSettings {
-  showreel?: { url?: string; posterUrl?: string };
+  showreel?: VideoRef;
+  /** One optional hover clip per service, in the fixed dictionary order:
+   *  [Advertising, Social & Reels, Brand Films, Long Form]. */
+  servicePreviews: (VideoRef | null)[];
+}
+
+interface RawSettings {
+  showreel?: VideoRef;
+  advertisingPreview?: VideoRef;
+  socialPreview?: VideoRef;
+  brandPreview?: VideoRef;
+  longFormPreview?: VideoRef;
 }
 
 interface RawProject {
@@ -67,15 +83,25 @@ export async function getWorks(): Promise<Work[]> {
 }
 
 export async function getSettings(): Promise<SiteSettings> {
-  if (!client) return {};
+  const empty: SiteSettings = { servicePreviews: [] };
+  if (!client) return empty;
   try {
-    const raw = await client.fetch<SiteSettings | null>(
+    const raw = await client.fetch<RawSettings | null>(
       SETTINGS_QUERY,
       {},
       { next: { revalidate: 60 } }
     );
-    return raw ?? {};
+    if (!raw) return empty;
+    return {
+      showreel: raw.showreel,
+      servicePreviews: [
+        raw.advertisingPreview ?? null,
+        raw.socialPreview ?? null,
+        raw.brandPreview ?? null,
+        raw.longFormPreview ?? null,
+      ],
+    };
   } catch {
-    return {};
+    return empty;
   }
 }
