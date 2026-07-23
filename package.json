@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "studio": "sanity dev --port 3333",
+    "studio:deploy": "sanity deploy"
   },
   "dependencies": {
     "@sanity/vision": "^4.22.0",

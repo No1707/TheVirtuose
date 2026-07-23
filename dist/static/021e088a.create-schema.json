@@ -1,0 +1,279 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url",
+        "title": "Video URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "posterUrl",
+        "type": "url",
+        "title": "Poster URL"
+      },
+      {
+        "name": "width",
+        "type": "number"
+      },
+      {
+        "name": "height",
+        "type": "number"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "title": "Duration (seconds)"
+      },
+      {
+        "name": "originalFilename",
+        "type": "string",
+        "title": "Original filename"
+      }
+    ],
+    "name": "videoAsset",
+    "type": "object",
+    "title": "Video"
+  },
+  {
+    "fields": [
+      {
+        "description": "Drag to reorder — this is the order shown on the Work page.",
+        "of": [
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "client",
+                "type": "string"
+              },
+              {
+                "options": {
+                  "list": [
+                    {
+                      "title": "Advertising",
+                      "value": "Advertising"
+                    },
+                    {
+                      "title": "Social & Reels",
+                      "value": "Social & Reels"
+                    },
+                    {
+                      "title": "Brand Film",
+                      "value": "Brand Film"
+                    },
+                    {
+                      "title": "Long Form",
+                      "value": "Long Form"
+                    }
+                  ],
+                  "layout": "radio"
+                },
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "Advertising",
+                          "Social & Reels",
+                          "Brand Film",
+                          "Long Form"
+                        ]
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "category",
+                "type": "string"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "year",
+                "type": "string"
+              },
+              {
+                "name": "video",
+                "type": "videoAsset"
+              },
+              {
+                "description": "Optional. Leave empty to use the video's real duration.",
+                "name": "runtime",
+                "type": "string",
+                "title": "Runtime override"
+              }
+            ],
+            "type": "object",
+            "name": "project"
+          }
+        ],
+        "name": "projects",
+        "type": "array"
+      }
+    ],
+    "name": "workList",
+    "type": "document",
+    "title": "Projects"
+  },
+  {
+    "fields": [
+      {
+        "description": "The looping video behind the homepage headline. Keep it short (8–20s) and quiet.",
+        "name": "showreel",
+        "type": "videoAsset",
+        "title": "Hero showreel"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 4
+              }
+            ],
+            "level": "warning",
+            "message": "The layout is designed for four."
+          }
+        ],
+        "description": "Shown in the Studio section. Keep these truthful.",
+        "of": [
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "label",
+                "type": "string"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "type": "object",
+            "name": "stat"
+          }
+        ],
+        "name": "stats",
+        "type": "array",
+        "title": "Studio numbers"
+      },
+      {
+        "description": "Names scrolling across the homepage. Only list clients you may publicly name.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "clients",
+        "type": "array",
+        "title": "Client marquee"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document",
+    "title": "Site settings"
+  }
+]

@@ -1,5 +1,3 @@
-"use client";
-
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
@@ -7,18 +5,15 @@ import { schemaTypes } from "./src/sanity/schemas";
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 
 /**
- * Studio config. Both content types are singletons — Alec should see two clear
- * entries ("Projects", "Site settings"), not a generic document list.
+ * Studio config, built and hosted by Sanity itself (`npm run studio:deploy`)
+ * rather than embedded in the Next.js app — that kept breaking the site's
+ * server render and tied the CMS to the host's environment variables.
+ *
+ * Both content types are singletons: Alec sees two clear entries
+ * ("Projects", "Site settings"), not a generic document list.
  */
 export default defineConfig({
-  basePath: "/studio",
-  /**
-   * defineConfig() runs when this module loads — and client modules are also
-   * executed during server rendering. An empty projectId would therefore throw
-   * before the page can show a helpful message, surfacing as an opaque 500.
-   * The placeholder keeps it loadable; the page checks the real value.
-   */
-  projectId: projectId || "missing-project-id",
+  projectId,
   dataset,
   schema: { types: schemaTypes },
   plugins: [
