@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
+import Image from "next/image";
 import Reveal from "./Reveal";
-import Screen from "./Screen";
 import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./About.module.css";
 
@@ -26,8 +26,14 @@ export default function About({
               viewport={{ once: true, margin: "0px 0px -15% 0px" }}
               transition={{ duration: 1, ease: EASE }}
             >
-              {/* Swap for a real portrait: <img src="/studio/alec.jpg" ... /> */}
-              <Screen tone={20} label={dict.about.portraitLabel} bars={false} />
+              <Image
+                src="/studio/alec.png"
+                alt={dict.about.portraitLabel}
+                fill
+                sizes="(max-width: 860px) 100vw, 40vw"
+                className={styles.portraitImg}
+                priority={false}
+              />
             </motion.div>
             <span className={`${styles.plate} mono`}>{dict.about.plate}</span>
           </div>

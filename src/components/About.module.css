@@ -9,9 +9,16 @@
   position: relative;
 }
 .portrait {
+  position: relative; /* required by next/image fill */
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border: 1px solid var(--hair);
+}
+/* Matched to the video surfaces so the portrait sits inside the warm
+   monochrome palette instead of being the only saturated element. */
+.portraitImg {
+  object-fit: cover;
+  filter: saturate(0.15) contrast(1.05);
 }
 .plate {
   display: block;
