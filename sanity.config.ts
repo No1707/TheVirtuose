@@ -12,7 +12,13 @@ import { apiVersion, dataset, projectId } from "./src/sanity/env";
  */
 export default defineConfig({
   basePath: "/studio",
-  projectId,
+  /**
+   * defineConfig() runs when this module loads — and client modules are also
+   * executed during server rendering. An empty projectId would therefore throw
+   * before the page can show a helpful message, surfacing as an opaque 500.
+   * The placeholder keeps it loadable; the page checks the real value.
+   */
+  projectId: projectId || "missing-project-id",
   dataset,
   schema: { types: schemaTypes },
   plugins: [
