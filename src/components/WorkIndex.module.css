@@ -24,6 +24,8 @@
 }
 
 /* --- Controls / filters ---------------------------------------------- */
+/* Static: the filters scroll away with the content, they don't stick to the
+   top of the viewport. */
 .controls {
   display: flex;
   align-items: center;
@@ -33,11 +35,6 @@
   padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   border-bottom: 1px solid var(--hair);
-  position: sticky;
-  top: 0;
-  background: linear-gradient(to bottom, var(--void) 70%, transparent);
-  padding-top: 1.2rem;
-  z-index: 20;
 }
 .filters {
   display: flex;

@@ -109,17 +109,19 @@ export default function WorkIndex({ works }: { works: Work[] }) {
 
       <section className={`${styles.cta} shell`}>
         <span className="label">{dict.work.ctaLabel}</span>
-        <div className={styles.ctaRow}>
-          <Link
-            href={`/${locale}#contact`}
-            className={`${styles.ctaTitle} display`}
-          >
+        {/* The whole row is the link, so hover and click share one hit area. */}
+        <Link
+          href={`/${locale}#contact`}
+          className={styles.ctaRow}
+          data-cursor="link"
+        >
+          <span className={`${styles.ctaTitle} display`}>
             {dict.work.ctaTitle}
-          </Link>
+          </span>
           <span className={styles.ctaArrow} aria-hidden="true">
             ↗
           </span>
-        </div>
+        </Link>
       </section>
 
       <Lightbox work={active} onClose={() => setActive(null)} />

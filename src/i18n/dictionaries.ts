@@ -79,7 +79,7 @@ const en = {
       "Today, my focus is on building long-term partnerships with agencies and brands. I enjoy becoming a seamless extension of a creative team, helping scale video production with consistency, reliability, and a deep understanding of each client's creative standards.",
       "I believe the best partnerships are built on trust, clear communication, and a shared commitment to producing great work. If that sounds like the way you like to work too, I'd love to hear from you.",
     ],
-    plate: "A. ŽIGIĆ — EDITOR / COLOURIST",
+    plate: "A. ŽIGIĆ — VIDEO EDITOR",
     portraitLabel: "Alec Žigić · Founder",
     stats: [
       { value: "5+", label: "Years of experience" },
@@ -102,7 +102,7 @@ const en = {
     nav: "Footer",
   },
   work: {
-    eyebrow: "Selected work · The reel",
+    eyebrow: "Work · Selected cuts",
     title: "The work, in full.",
     lede: "Ads, social, brand films and long-form — a cross-section of what we cut, colour and finish for brands across Europe and beyond.",
     filterAria: "Filter by format",
@@ -205,7 +205,7 @@ const fr: typeof en = {
       "Aujourd'hui, je me concentre sur des partenariats de long terme avec des agences et des marques. J'aime devenir le prolongement naturel d'une équipe créative et aider à faire passer la production vidéo à l'échelle, avec constance, fiabilité et une vraie compréhension des exigences créatives de chaque client.",
       "Je crois que les meilleurs partenariats reposent sur la confiance, une communication claire et une même exigence du travail bien fait. Si c'est aussi votre façon de travailler, écrivez-moi.",
     ],
-    plate: "A. ŽIGIĆ — MONTEUR / ÉTALONNEUR",
+    plate: "A. ŽIGIĆ — MONTEUR VIDÉO",
     portraitLabel: "Alec Žigić · Fondateur",
     stats: [
       { value: "5+", label: "Années d'expérience" },
@@ -228,7 +228,7 @@ const fr: typeof en = {
     nav: "Pied de page",
   },
   work: {
-    eyebrow: "Projets sélectionnés · Le reel",
+    eyebrow: "Projets · Sélection",
     title: "Tous les projets.",
     lede: "Publicité, social, films de marque et format long — un aperçu de ce que nous montons, étalonnons et finalisons pour des marques en Europe et au-delà.",
     filterAria: "Filtrer par format",
