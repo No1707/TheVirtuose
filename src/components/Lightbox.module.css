@@ -94,6 +94,20 @@
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
 }
 
+/* --- Vertical reels (9:16) ------------------------------------------- */
+.stageVertical {
+  width: min(460px, 100%);
+  margin-inline: auto;
+  align-items: stretch;
+}
+.playerVertical {
+  height: min(74vh, 760px);
+  aspect-ratio: 9 / 16;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
 @media (max-width: 640px) {
   .close .label {
     display: none;

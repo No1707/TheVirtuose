@@ -59,6 +59,25 @@
   100% { transform: translateX(45%); }
 }
 
+/* Vertical 9:16 surfaces: sweep the light top-to-bottom instead of across,
+   so a tall reel reads as a real light pass rather than a stuck diagonal. */
+.vertical .sweep {
+  background: linear-gradient(
+    195deg,
+    transparent 30%,
+    rgba(242, 239, 234, 0.14) 48%,
+    rgba(242, 239, 234, 0.02) 52%,
+    transparent 70%
+  );
+  transform: translateY(-45%);
+  animation-name: sweepV;
+}
+
+@keyframes sweepV {
+  0% { transform: translateY(-45%); }
+  100% { transform: translateY(45%); }
+}
+
 /* --- Cinemascope mattes ---------------------------------------------- */
 .matte {
   position: absolute;

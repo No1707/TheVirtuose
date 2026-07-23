@@ -23,6 +23,8 @@ export interface Work {
   frames: number;
   /** Hue/feel key used to differentiate the monochrome placeholder screens. */
   tone: number;
+  /** True for vertical 9:16 reels (rather than landscape 16:9). */
+  vertical?: boolean;
 }
 
 export const works: Work[] = [
@@ -86,6 +88,7 @@ export const works: Work[] = [
     deliverables: ["6× vertical reels", "Template kit", "Caption set"],
     frames: 3,
     tone: 210,
+    vertical: true,
   },
   {
     slug: "the-long-take",
@@ -146,6 +149,46 @@ export const works: Work[] = [
     deliverables: ["45s spot", "Product loops", "Detail stills"],
     frames: 3,
     tone: 12,
+  },
+  {
+    slug: "grain-and-gold",
+    index: "07",
+    title: "Grain & Gold",
+    client: "Orfèvre",
+    category: "Social & Reels",
+    year: "2025",
+    length: "00:15",
+    tagline: "A jewellery drop, shot for the vertical scroll.",
+    summary:
+      "A 9:16 reel series for a jeweller — macro glints, hard cuts, framed thumb-first.",
+    narrative: [
+      "Fifteen seconds, filmed vertically from the first frame so nothing had to be cropped later. The hook is the light catching gold in the opening beat.",
+    ],
+    role: ["Concept", "Macro", "Edit", "Sound"],
+    deliverables: ["4× vertical reels", "Cover frames"],
+    frames: 3,
+    tone: 34,
+    vertical: true,
+  },
+  {
+    slug: "midnight-menu",
+    index: "08",
+    title: "Midnight Menu",
+    client: "Café Vesper",
+    category: "Social & Reels",
+    year: "2025",
+    length: "00:18",
+    tagline: "A late-night bistro, one reel at a time.",
+    summary:
+      "A vertical social series for a restaurant — steam, candlelight and quick hands, cut to a slow beat.",
+    narrative: [
+      "A monthly reel format built to make a small room feel like the place to be at midnight. Shot vertical, lit warm, edited to leave you hungry.",
+    ],
+    role: ["Direction", "Edit", "Colour", "Sound"],
+    deliverables: ["Monthly reels", "Story cutdowns"],
+    frames: 3,
+    tone: 22,
+    vertical: true,
   },
 ];
 

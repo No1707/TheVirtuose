@@ -79,6 +79,9 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: auto; /* Lenis handles smoothing */
   background: var(--void);
+  /* Reserve the scrollbar gutter permanently so locking scroll (modals) never
+     shifts the layout or nudges fixed elements. */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -102,9 +105,9 @@ html.lenis body {
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
+/* NB: intentionally no `.lenis-stopped { overflow: hidden }` — that removes the
+   scrollbar and shifts the layout when scroll is locked. Modals block scroll
+   via wheel/touch guards instead (see Lightbox), keeping the scrollbar. */
 
 img,
 picture,

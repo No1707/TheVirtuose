@@ -28,7 +28,7 @@ export default function Cursor() {
     let raf = 0;
 
     function render() {
-      const speed = reduce ? 1 : 0.3;
+      const speed = reduce ? 1 : 0.45;
       cur.x += (pos.x - cur.x) * speed;
       cur.y += (pos.y - cur.y) * speed;
       if (dot.current) {

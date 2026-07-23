@@ -13,6 +13,7 @@ export default function Screen({
   poster,
   className,
   bars = true,
+  vertical = false,
 }: {
   tone?: number;
   label?: string;
@@ -20,10 +21,14 @@ export default function Screen({
   poster?: string;
   className?: string;
   bars?: boolean;
+  /** Vertical 9:16 surface — orients the light sweep top-to-bottom. */
+  vertical?: boolean;
 }) {
   return (
     <div
-      className={`${styles.screen} ${className ?? ""}`}
+      className={`${styles.screen} ${vertical ? styles.vertical : ""} ${
+        className ?? ""
+      }`}
       style={{ ["--tone" as string]: `${tone}deg` }}
     >
       {src ? (

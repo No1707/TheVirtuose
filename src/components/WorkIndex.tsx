@@ -64,11 +64,13 @@ export default function WorkIndex() {
         {shown.map((w, i) => (
           <motion.article
             key={w.slug}
-            layout
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EASE, delay: (i % 3) * 0.05 }}
             className={styles.card}
+            /* --a is the tile's aspect ratio: it drives flex-grow, flex-basis
+               and the thumbnail box, which is what makes every row justify. */
+            style={{ ["--a" as string]: `${w.vertical ? 9 / 16 : 16 / 10}` }}
           >
             <button
               type="button"
@@ -78,7 +80,13 @@ export default function WorkIndex() {
               aria-label={`Play ${w.title} — ${w.client}`}
             >
               <div className={styles.thumb}>
-                <Screen tone={w.tone} label={w.length} />
+                <Screen
+                  tone={w.tone}
+                  label={w.length}
+                  bars={!w.vertical}
+                  vertical={w.vertical}
+                />
+                {w.vertical && <span className={styles.reelBadge}>9:16</span>}
                 <span className={`${styles.idx} mono`}>{w.index}</span>
               </div>
               <div className={styles.meta}>

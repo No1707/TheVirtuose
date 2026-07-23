@@ -72,13 +72,24 @@
 }
 
 /* --- Grid ------------------------------------------------------------- */
+/* Justified rows (Google-Photos style): each tile's flex-basis AND flex-grow
+   are proportional to its aspect ratio, so every row fills the width exactly
+   and all tiles in a row end up the same height — landscape and 9:16 alike.
+   --row is the target row height; --a is set per card from its aspect. */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.5rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  --row: 290px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 1.9vw, 1.6rem);
 }
+/* Fixed height for every tile: the width is derived from the aspect ratio, and
+   tiles never grow. A short row keeps its natural sizes and simply leaves
+   space at the end, instead of stretching to fill the width. */
 .card {
-  min-width: 0;
+  flex: 0 0 auto;
+  width: calc(var(--a) * var(--row));
+  max-width: 100%;
 }
 .cardLink {
   display: flex;
@@ -93,10 +104,25 @@
 }
 .thumb {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: var(--a);
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--hair);
   transition: border-color var(--dur) var(--ease-out);
+}
+.reelBadge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.9rem;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--hair-strong);
+  border-radius: 100px;
+  mix-blend-mode: difference;
 }
 .cardLink:hover .thumb {
   border-color: var(--hair-strong);
@@ -185,7 +211,8 @@
 }
 
 @media (max-width: 720px) {
+  /* Smaller target row so tiles still pair up instead of going full-width. */
   .grid {
-    grid-template-columns: 1fr;
+    --row: 200px;
   }
 }

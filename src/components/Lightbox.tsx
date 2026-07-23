@@ -52,8 +52,14 @@ export default function Lightbox({
     const lenis = (
       window as unknown as { lenis?: { stop(): void; start(): void } }
     ).lenis;
+
+    // Freeze background scroll WITHOUT changing overflow (which would remove the
+    // scrollbar and shift the layout, including the fixed nav). Stop Lenis so it
+    // doesn't drive scroll, and guard wheel/touch so native scroll can't either.
     lenis?.stop();
-    document.body.style.overflow = "hidden";
+    const prevent = (e: Event) => e.preventDefault();
+    window.addEventListener("wheel", prevent, { passive: false });
+    window.addEventListener("touchmove", prevent, { passive: false });
 
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") requestClose();
@@ -63,9 +69,10 @@ export default function Lightbox({
 
     return () => {
       window.removeEventListener("keydown", onKey);
+      window.removeEventListener("wheel", prevent);
+      window.removeEventListener("touchmove", prevent);
       window.clearTimeout(id);
       lenis?.start();
-      document.body.style.overflow = "";
       restoreTo.current?.focus?.();
     };
   }, [mounted, requestClose]);
@@ -82,7 +89,12 @@ export default function Lightbox({
       aria-modal="true"
       aria-label={`${current.title} — video`}
     >
-      <div className={styles.stage} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`${styles.stage} ${
+          current.vertical ? styles.stageVertical : ""
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.bar}>
           <div className={styles.titleWrap}>
             <span className={`${styles.title} serif`}>{current.title}</span>
@@ -103,9 +115,17 @@ export default function Lightbox({
           </button>
         </div>
 
-        <div className={styles.player}>
+        <div
+          className={`${styles.player} ${
+            current.vertical ? styles.playerVertical : ""
+          }`}
+        >
           {/* Swap for footage: <Screen src={`/reels/${current.slug}.mp4`} /> */}
-          <Screen tone={current.tone} />
+          <Screen
+            tone={current.tone}
+            bars={!current.vertical}
+            vertical={current.vertical}
+          />
         </div>
       </div>
     </div>
