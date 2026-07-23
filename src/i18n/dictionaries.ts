@@ -69,41 +69,21 @@ const en = {
       },
     ],
   },
-  marquee: {
-    label: "Trusted by brands who sweat the details",
-    aria: "Selected clients",
-  },
   about: {
     eyebrow: "The studio",
-    title: "One editor's obsession, scaled into a studio.",
-    body1:
-      "The Virtuose is a boutique video editing studio founded by Alec Žigić — French made, based in Andorra, working with brands across Europe and beyond. We keep it deliberately small: you talk to the editor who actually cuts your film, not an account manager.",
-    body2:
-      "No account layers, no handoffs, no house style forced onto your brand. Just a tight creative loop and an editor's eye for the two frames that make a film land.",
+    title: "Successful collaborations are built on clear communication.",
+    intro: "Hi, I'm Alec.",
+    paragraphs: [
+      "I'm a French video editor now based in Andorra, with over seven years of experience creating content that helps brands and agencies grow.",
+      "Throughout my career, I've worked with agencies and SaaS companies across a wide range of formats, from performance ads and organic short-form content to podcasts, talking-head videos and social media campaigns. Over time, I naturally specialized in performance-focused creative, where every second of a video has a purpose.",
+      "Today, my focus is on building long-term partnerships with agencies and brands. I enjoy becoming a seamless extension of a creative team, helping scale video production with consistency, reliability, and a deep understanding of each client's creative standards.",
+      "I believe the best partnerships are built on trust, clear communication, and a shared commitment to producing great work. If that sounds like the way you like to work too, I'd love to hear from you.",
+    ],
     plate: "A. ŽIGIĆ — EDITOR / COLOURIST",
     portraitLabel: "Alec Žigić · Founder",
-  },
-  process: {
-    eyebrow: "How it runs · 04 steps",
-    title: "From footage to master, without the agency drag.",
-    aria: "Process",
-    steps: [
-      {
-        t: "Brief & footage",
-        d: "You send the rushes and what the film has to do. One conversation to agree the angle, the length and the deadline.",
-      },
-      {
-        t: "Assembly",
-        d: "Structure first: selects, story order, pacing. You see a rough cut early, before any polish goes in.",
-      },
-      {
-        t: "Edit & colour",
-        d: "Where the film is actually made. Rhythm, sound design, colour and titles, refined over a tight round of notes.",
-      },
-      {
-        t: "Deliver",
-        d: "Every cut and every aspect ratio your channels need, mastered and handed over on schedule.",
-      },
+    stats: [
+      { value: "5+", label: "Years of experience" },
+      { value: "5,000+", label: "Videos delivered" },
     ],
   },
   contact: {
@@ -215,41 +195,21 @@ const fr: typeof en = {
       },
     ],
   },
-  marquee: {
-    label: "La confiance de marques exigeantes sur le détail",
-    aria: "Clients sélectionnés",
-  },
   about: {
     eyebrow: "Le studio",
-    title: "L'obsession d'un monteur, devenue un studio.",
-    body1:
-      "The Virtuose est un studio de montage vidéo fondé par Alec Žigić — French made, basé en Andorre, au service de marques en Europe et au-delà. La structure reste volontairement réduite : vous parlez au monteur qui monte réellement votre film, pas à un chargé de clientèle.",
-    body2:
-      "Aucune strate intermédiaire, aucun passage de relais, aucun style maison imposé à votre marque. Juste une boucle créative courte et l'œil d'un monteur pour les deux images qui font basculer un film.",
+    title: "Les collaborations réussies reposent sur une communication claire.",
+    intro: "Bonjour, je suis Alec.",
+    paragraphs: [
+      "Je suis un monteur vidéo français, désormais basé en Andorre, avec plus de sept ans d'expérience dans la création de contenus qui aident les marques et les agences à se développer.",
+      "Au fil de mon parcours, j'ai travaillé avec des agences et des entreprises SaaS sur une grande variété de formats : publicités à la performance, contenus courts organiques, podcasts, vidéos face caméra et campagnes pour les réseaux sociaux. Je me suis naturellement spécialisé dans le créatif orienté performance, où chaque seconde d'une vidéo a une raison d'être.",
+      "Aujourd'hui, je me concentre sur des partenariats de long terme avec des agences et des marques. J'aime devenir le prolongement naturel d'une équipe créative et aider à faire passer la production vidéo à l'échelle, avec constance, fiabilité et une vraie compréhension des exigences créatives de chaque client.",
+      "Je crois que les meilleurs partenariats reposent sur la confiance, une communication claire et une même exigence du travail bien fait. Si c'est aussi votre façon de travailler, écrivez-moi.",
+    ],
     plate: "A. ŽIGIĆ — MONTEUR / ÉTALONNEUR",
     portraitLabel: "Alec Žigić · Fondateur",
-  },
-  process: {
-    eyebrow: "Le déroulé · 04 étapes",
-    title: "Des rushes au master, sans la lourdeur d'une agence.",
-    aria: "Processus",
-    steps: [
-      {
-        t: "Brief & rushes",
-        d: "Vous envoyez les rushes et l'objectif du film. Une conversation pour fixer l'angle, la durée et l'échéance.",
-      },
-      {
-        t: "Assemblage",
-        d: "La structure d'abord : sélection, ordre du récit, rythme. Vous voyez un bout-à-bout tôt, avant tout travail de finition.",
-      },
-      {
-        t: "Montage & étalonnage",
-        d: "C'est là que le film se fait vraiment. Rythme, sound design, couleur et titrages, affinés en un aller-retour serré.",
-      },
-      {
-        t: "Livraison",
-        d: "Tous les montages et tous les formats dont vos canaux ont besoin, masterisés et livrés dans les délais.",
-      },
+    stats: [
+      { value: "5+", label: "Années d'expérience" },
+      { value: "5 000+", label: "Vidéos livrées" },
     ],
   },
   contact: {

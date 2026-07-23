@@ -1,19 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EASE } from "@/lib/motion";
 import Image from "next/image";
+import { EASE } from "@/lib/motion";
 import Reveal from "./Reveal";
 import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./About.module.css";
 
-export default function About({
-  stats,
-}: {
-  stats: { label: string; value: string }[];
-}) {
+export default function About() {
   const { dict } = useI18n();
-  const STATS = stats.map((s) => ({ k: s.label, v: s.value }));
+
   return (
     <section className={`${styles.wrap} section hair-top`} id="studio">
       <div className="shell">
@@ -32,10 +28,18 @@ export default function About({
                 fill
                 sizes="(max-width: 860px) 100vw, 40vw"
                 className={styles.portraitImg}
-                priority={false}
               />
             </motion.div>
             <span className={`${styles.plate} mono`}>{dict.about.plate}</span>
+
+            <dl className={styles.stats}>
+              {dict.about.stats.map((s) => (
+                <div key={s.label} className={styles.stat}>
+                  <dd className={`${styles.statValue} serif tnum`}>{s.value}</dd>
+                  <dt className={`${styles.statLabel} label`}>{s.label}</dt>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div className={styles.copy}>
@@ -44,20 +48,13 @@ export default function About({
               <h2 className={`${styles.title} display`}>{dict.about.title}</h2>
             </Reveal>
             <Reveal delay={1}>
-              <p className={styles.body}>{dict.about.body1}</p>
+              <p className={`${styles.intro} serif`}>{dict.about.intro}</p>
             </Reveal>
-            <Reveal delay={2}>
-              <p className={styles.body}>{dict.about.body2}</p>
-            </Reveal>
-
-            <dl className={styles.stats}>
-              {STATS.map((s, i) => (
-                <Reveal as="div" key={s.k} delay={i} className={styles.stat}>
-                  <dt className="label">{s.k}</dt>
-                  <dd className={`${styles.statV} serif`}>{s.v}</dd>
-                </Reveal>
-              ))}
-            </dl>
+            {dict.about.paragraphs.map((p, i) => (
+              <Reveal key={i} delay={i + 2}>
+                <p className={styles.body}>{p}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

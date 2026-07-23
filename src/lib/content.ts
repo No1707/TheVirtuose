@@ -3,8 +3,6 @@ import { works as sampleWorks, type Category, type Work } from "./works";
 
 export interface SiteSettings {
   showreel?: { url?: string; posterUrl?: string };
-  stats: { label: string; value: string }[];
-  clients: string[];
 }
 
 interface RawProject {
@@ -22,24 +20,6 @@ interface RawProject {
     duration?: number;
   };
 }
-
-const DEFAULT_STATS = [
-  { label: "Since", value: "2021" },
-  { label: "Based", value: "Andorra" },
-  { label: "Films cut", value: "120+" },
-  { label: "Avg. turnaround", value: "10 days" },
-];
-
-const DEFAULT_CLIENTS = [
-  "Maison Lumière",
-  "Atelier V728",
-  "Kösk Studios",
-  "Vireo",
-  "Béton Brut",
-  "Halden",
-  "Studio Norr",
-  "Édition Neuf",
-];
 
 /** mm:ss from a duration in seconds. */
 function formatRuntime(seconds?: number): string {
@@ -69,8 +49,7 @@ function toWork(p: RawProject, i: number): Work {
 
 /**
  * Projects for the Work page. Falls back to the built-in sample set whenever
- * the CMS is not configured yet or has no projects, so the site never renders
- * empty during setup.
+ * the CMS is unreachable or has no projects, so the site never renders empty.
  */
 export async function getWorks(): Promise<Work[]> {
   if (!client) return sampleWorks;
@@ -88,24 +67,15 @@ export async function getWorks(): Promise<Work[]> {
 }
 
 export async function getSettings(): Promise<SiteSettings> {
-  const fallback: SiteSettings = {
-    stats: DEFAULT_STATS,
-    clients: DEFAULT_CLIENTS,
-  };
-  if (!client) return fallback;
+  if (!client) return {};
   try {
-    const raw = await client.fetch<Partial<SiteSettings> | null>(
+    const raw = await client.fetch<SiteSettings | null>(
       SETTINGS_QUERY,
       {},
       { next: { revalidate: 60 } }
     );
-    if (!raw) return fallback;
-    return {
-      showreel: raw.showreel,
-      stats: raw.stats?.length ? raw.stats : fallback.stats,
-      clients: raw.clients?.length ? raw.clients : fallback.clients,
-    };
+    return raw ?? {};
   } catch {
-    return fallback;
+    return {};
   }
 }

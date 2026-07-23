@@ -1,5 +1,7 @@
 .wrap {
-  padding-block: var(--space-3xl);
+  /* Tighter on top: it continues the studio block rather than starting a
+     new chapter. */
+  padding-block: var(--space-lg) var(--space-3xl);
   scroll-margin-top: 6rem;
 }
 

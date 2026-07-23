@@ -18,7 +18,5 @@ export const WORKS_QUERY = `*[_type == "workList"][0].projects[]{
 }`;
 
 export const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
-  showreel{url, posterUrl, width, height},
-  stats[]{label, value},
-  clients
+  showreel{url, posterUrl, width, height}
 }`;

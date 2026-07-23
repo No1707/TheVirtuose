@@ -2,9 +2,7 @@ import Preloader from "@/components/Preloader";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Services from "@/components/Services";
-import Marquee from "@/components/Marquee";
 import About from "@/components/About";
-import Process from "@/components/Process";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import { getSettings } from "@/lib/content";
@@ -37,9 +35,9 @@ export default async function Home() {
         <Hero showreel={settings.showreel} />
         <Manifesto />
         <Services />
-        <Marquee clients={settings.clients} />
-        <About stats={settings.stats} />
-        <Process />
+        {/* About and Contact read as one closing block: who you'd work with,
+            then how to reach him. */}
+        <About />
         <ContactCTA />
       </main>
       <Footer />
