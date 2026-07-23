@@ -2,22 +2,33 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE } from "@/lib/motion";
+import { useI18n } from "@/i18n/I18nProvider";
+import { locales, type Locale } from "@/i18n/dictionaries";
 import Timecode from "./Timecode";
 import styles from "./Nav.module.css";
 
-const LINKS = [
-  { label: "Work", href: "/work" },
-  { label: "Services", href: "/#services" },
-  { label: "Studio", href: "/#studio" },
-  { label: "Contact", href: "/#contact" },
-];
-
 export default function Nav() {
+  const { dict, locale } = useI18n();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const LINKS = [
+    { label: dict.nav.work, href: `/${locale}/work` },
+    { label: dict.nav.services, href: `/${locale}#services` },
+    { label: dict.nav.studio, href: `/${locale}#studio` },
+    { label: dict.nav.contact, href: `/${locale}#contact` },
+  ];
+
+  /** Same page, other language. */
+  function otherLocaleHref(target: Locale) {
+    const rest = pathname.replace(/^\/(en|fr)/, "");
+    return `/${target}${rest}`;
+  }
 
   // Hide the bar on scroll-down, reveal on scroll-up.
   useEffect(() => {
@@ -57,12 +68,16 @@ export default function Nav() {
         }`}
       >
         <div className={styles.row}>
-          <Link href="/" className={styles.brand} aria-label="The Virtuose home">
+          <Link
+            href={`/${locale}`}
+            className={styles.brand}
+            aria-label={dict.nav.home}
+          >
             <span className={styles.mark}>The Virtuose</span>
-            <span className={`${styles.meta} label`}>Andorra · 42.5°N</span>
+            <span className={`${styles.meta} label`}>{dict.nav.location}</span>
           </Link>
 
-          <nav className={styles.links} aria-label="Primary">
+          <nav className={styles.links} aria-label={dict.nav.primary}>
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href} className={styles.link}>
                 {l.label}
@@ -71,6 +86,27 @@ export default function Nav() {
           </nav>
 
           <div className={styles.right}>
+            <div className={styles.locale}>
+              {locales.map((l, i) => (
+                <span key={l} className={styles.localeItem}>
+                  {i > 0 && (
+                    <span className={styles.localeSep} aria-hidden="true">
+                      ·
+                    </span>
+                  )}
+                  <Link
+                    href={otherLocaleHref(l)}
+                    className={`${styles.localeLink} ${
+                      l === locale ? styles.localeOn : ""
+                    }`}
+                    hrefLang={l}
+                    aria-current={l === locale ? "true" : undefined}
+                  >
+                    {l.toUpperCase()}
+                  </Link>
+                </span>
+              ))}
+            </div>
             <Timecode className={`${styles.tc} mono tnum`} />
             <span className={styles.rec} aria-hidden="true" />
             <button
@@ -79,7 +115,9 @@ export default function Nav() {
               aria-expanded={open}
               aria-controls="menu-overlay"
             >
-              <span className="label">{open ? "Close" : "Menu"}</span>
+              <span className="label">
+                {open ? dict.nav.close : dict.nav.menu}
+              </span>
             </button>
           </div>
         </div>
@@ -125,7 +163,10 @@ export default function Nav() {
                 ))}
               </ul>
               <div className={styles.menuFoot}>
-                <a href="mailto:contact@the-virtuose.com" className={styles.footLink}>
+                <a
+                  href="mailto:contact@the-virtuose.com"
+                  className={styles.footLink}
+                >
                   contact@the-virtuose.com
                 </a>
                 <div className={styles.footSocials}>
@@ -137,7 +178,7 @@ export default function Nav() {
                     Instagram
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/alec-žiga"
+                    href="https://www.linkedin.com/in/alec-zigic/"
                     target="_blank"
                     rel="noreferrer"
                   >

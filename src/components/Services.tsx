@@ -4,48 +4,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
 import Screen from "./Screen";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Services.module.css";
 
-interface Service {
-  title: string;
-  runtime: string;
-  line: string;
-  body: string;
-  tone: number;
-}
-
-const SERVICES: Service[] = [
-  {
-    title: "Advertising",
-    runtime: "00:06 – 00:60",
-    line: "Spots that earn a second watch.",
-    body: "Broadcast and online films built on a single idea and a tight cut — engineered to perform in the feed and hold up on a big screen.",
-    tone: 12,
-  },
-  {
-    title: "Social & Reels",
-    runtime: "00:07 – 00:30",
-    line: "Vertical-native, hook-first.",
-    body: "Thumb-stopping short form designed for the platform, not squeezed into it. Delivered as repeatable systems, not one-offs.",
-    tone: 210,
-  },
-  {
-    title: "Brand Films",
-    runtime: "01:00 – 03:00",
-    line: "The film that becomes the brand.",
-    body: "Cinematic pieces that give a company a face and a feeling — the anchor asset everything else references.",
-    tone: 26,
-  },
-  {
-    title: "Long Form & Podcast",
-    runtime: "20:00 +",
-    line: "Depth, cut for reach.",
-    body: "Multicam series and founder conversations, edited for pace and sliced into a month of short-form pulls from a single shoot.",
-    tone: 200,
-  },
-];
+/** Tones are visual, not editorial, so they stay out of the dictionary. */
+const TONES = [12, 210, 26, 200];
 
 export default function Services() {
+  const { dict } = useI18n();
+  const SERVICES = dict.services.items.map((s, i) => ({
+    ...s,
+    tone: TONES[i] ?? 0,
+  }));
+
   // `active` drives the row highlight and clears on mouse-out.
   const [active, setActive] = useState<number | null>(null);
   // `preview` keeps the last-hovered channel on screen so the preview column
@@ -56,8 +27,8 @@ export default function Services() {
     <section className={`${styles.wrap} section hair-top`} id="services">
       <div className="shell">
         <header className={styles.head}>
-          <span className="label">What we shoot · 04 channels</span>
-          <h2 className={`${styles.title} display`}>Built for every runtime.</h2>
+          <span className="label">{dict.services.eyebrow}</span>
+          <h2 className={`${styles.title} display`}>{dict.services.title}</h2>
         </header>
 
         <div className={styles.grid}>

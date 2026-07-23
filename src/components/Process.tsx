@@ -2,41 +2,26 @@
 
 import { motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Process.module.css";
 
-/** A genuine sequence — so numbered steps encode real order. */
-const STEPS = [
-  {
-    n: "01",
-    t: "Brief & direction",
-    d: "We start with the idea and the outcome, not the gear. One conversation to agree what the film has to do.",
-  },
-  {
-    n: "02",
-    t: "Shoot",
-    d: "A small, fast crew. Lit for contrast, framed with intent — we capture less footage and more moments.",
-  },
-  {
-    n: "03",
-    t: "Edit & color",
-    d: "Where the film is actually made. Pace, sound, and a warm grade, refined over a tight round of notes.",
-  },
-  {
-    n: "04",
-    t: "Deliver",
-    d: "Every cut and every aspect ratio your channels need, mastered and handed over on schedule.",
-  },
-];
-
 export default function Process() {
+  const { dict } = useI18n();
+  /** A genuine sequence — so numbered steps encode real order. */
+  const STEPS = dict.process.steps.map((s, i) => ({
+    n: String(i + 1).padStart(2, "0"),
+    ...s,
+  }));
+
   return (
-    <section className={`${styles.wrap} section hair-top`} aria-label="Process">
+    <section
+      className={`${styles.wrap} section hair-top`}
+      aria-label={dict.process.aria}
+    >
       <div className="shell">
         <header className={styles.head}>
-          <span className="label">How it runs · 04 steps</span>
-          <h2 className={`${styles.title} display`}>
-            From brief to master, without the agency drag.
-          </h2>
+          <span className="label">{dict.process.eyebrow}</span>
+          <h2 className={`${styles.title} display`}>{dict.process.title}</h2>
         </header>
 
         <ol className={styles.grid}>

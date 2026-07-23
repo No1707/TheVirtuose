@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Work } from "@/lib/works";
 import Screen from "./Screen";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Lightbox.module.css";
 
 /**
@@ -20,6 +21,7 @@ export default function Lightbox({
   work: Work | null;
   onClose: () => void;
 }) {
+  const { dict } = useI18n();
   const [mounted, setMounted] = useState(false); // present in the DOM
   const [shown, setShown] = useState(false); // triggers the enter transition
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -108,7 +110,7 @@ export default function Lightbox({
             onClick={requestClose}
             data-cursor="link"
           >
-            <span className="label">Close</span>
+            <span className="label">{dict.nav.close}</span>
             <span className={styles.x} aria-hidden="true">
               ✕
             </span>
@@ -120,12 +122,23 @@ export default function Lightbox({
             current.vertical ? styles.playerVertical : ""
           }`}
         >
-          {/* Swap for footage: <Screen src={`/reels/${current.slug}.mp4`} /> */}
-          <Screen
-            tone={current.tone}
-            bars={!current.vertical}
-            vertical={current.vertical}
-          />
+          {current.videoUrl ? (
+            <video
+              className={styles.video}
+              src={current.videoUrl}
+              poster={current.posterUrl}
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+            />
+          ) : (
+            <Screen
+              tone={current.tone}
+              bars={!current.vertical}
+              vertical={current.vertical}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -1,11 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-import Grain from "@/components/Grain";
-import Cursor from "@/components/Cursor";
-import Frame from "@/components/Frame";
-import Nav from "@/components/Nav";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -35,10 +30,12 @@ export const metadata: Metadata = {
     template: "%s — The Virtuose",
   },
   description:
-    "A boutique video production studio. French Made, based in Andorra. Ads, social, brand films and long-form for brands that want to look inevitable.",
+    "A boutique video editing studio. French Made, based in Andorra. Ads, social, brand films and long-form — cut, coloured and finished for brands that want to look inevitable.",
   keywords: [
-    "video production",
     "video editing",
+    "video editor",
+    "post-production",
+    "colour grading",
     "brand films",
     "advertising video",
     "social media reels",
@@ -50,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Virtuose — Your Video Production Partner",
     description:
-      "A boutique video production studio. French Made, based in Andorra.",
+      "A boutique video editing studio. French Made, based in Andorra.",
     url: SITE,
     siteName: "The Virtuose",
     locale: "en",
@@ -60,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Virtuose — Your Video Production Partner",
     description:
-      "A boutique video production studio. French Made, based in Andorra.",
+      "A boutique video editing studio. French Made, based in Andorra.",
   },
   robots: { index: true, follow: true },
 };
@@ -81,18 +78,9 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${geist.variable} ${geistMono.variable}`}
     >
-      <body>
-        <a href="#main" className="skip-link">
-          Skip to content
-        </a>
-        <SmoothScroll>
-          <Frame />
-          <Nav />
-          {children}
-        </SmoothScroll>
-        <Grain />
-        <Cursor />
-      </body>
+      {/* Deliberately bare: the site's chrome (nav, grain, custom cursor,
+          smooth scroll) lives in the (site) group so /studio renders clean. */}
+      <body>{children}</body>
     </html>
   );
 }

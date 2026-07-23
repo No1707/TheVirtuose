@@ -3,43 +3,46 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { works, type Category, type Work } from "@/lib/works";
+import type { Category, Work } from "@/lib/works";
 import { EASE } from "@/lib/motion";
 import Screen from "./Screen";
 import Lightbox from "./Lightbox";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./WorkIndex.module.css";
 
-/** Filters mirror the categories on Alec's existing site nav. */
-const FILTERS: { label: string; value: Category | null }[] = [
-  { label: "All", value: null },
-  { label: "Advertising", value: "Advertising" },
-  { label: "Social & Reels", value: "Social & Reels" },
-  { label: "Brand Films", value: "Brand Film" },
-  { label: "Long Form", value: "Long Form" },
-];
-
-export default function WorkIndex() {
+export default function WorkIndex({ works }: { works: Work[] }) {
+  const { dict, locale } = useI18n();
   const [filter, setFilter] = useState<Category | null>(null);
   const [active, setActive] = useState<Work | null>(null);
 
+  /** Labels are translated; the values stay the CMS category strings. */
+  const FILTERS: { label: string; value: Category | null }[] = [
+    { label: dict.work.filters.all, value: null },
+    { label: dict.work.filters.advertising, value: "Advertising" },
+    { label: dict.work.filters.social, value: "Social & Reels" },
+    { label: dict.work.filters.brand, value: "Brand Film" },
+    { label: dict.work.filters.longform, value: "Long Form" },
+  ];
+
   const shown = useMemo(
     () => (filter ? works.filter((w) => w.category === filter) : works),
-    [filter]
+    [filter, works]
   );
 
   return (
     <main id="main" className={styles.page}>
       <header className={`${styles.head} shell`}>
-        <span className="label">Selected work · The reel</span>
-        <h1 className={`${styles.title} display`}>The work, in full.</h1>
-        <p className={styles.lede}>
-          Ads, social, brand films and long-form — a cross-section of what we
-          shoot, cut and colour for brands across Europe and beyond.
-        </p>
+        <span className="label">{dict.work.eyebrow}</span>
+        <h1 className={`${styles.title} display`}>{dict.work.title}</h1>
+        <p className={styles.lede}>{dict.work.lede}</p>
       </header>
 
       <div className={`${styles.controls} shell`}>
-        <div className={styles.filters} role="group" aria-label="Filter by format">
+        <div
+          className={styles.filters}
+          role="group"
+          aria-label={dict.work.filterAria}
+        >
           {FILTERS.map((f) => {
             const on = filter === f.value;
             return (
@@ -77,7 +80,7 @@ export default function WorkIndex() {
               className={styles.cardLink}
               data-cursor="play"
               onClick={() => setActive(w)}
-              aria-label={`Play ${w.title} — ${w.client}`}
+              aria-label={`${dict.work.play} — ${w.title}, ${w.client}`}
             >
               <div className={styles.thumb}>
                 <Screen
@@ -85,6 +88,8 @@ export default function WorkIndex() {
                   label={w.length}
                   bars={!w.vertical}
                   vertical={w.vertical}
+                  src={w.videoUrl}
+                  poster={w.posterUrl}
                 />
                 {w.vertical && <span className={styles.reelBadge}>9:16</span>}
                 <span className={`${styles.idx} mono`}>{w.index}</span>
@@ -103,10 +108,13 @@ export default function WorkIndex() {
       </section>
 
       <section className={`${styles.cta} shell`}>
-        <span className="label">Have a project in mind?</span>
+        <span className="label">{dict.work.ctaLabel}</span>
         <div className={styles.ctaRow}>
-          <Link href="/#contact" className={`${styles.ctaTitle} display`}>
-            Let&rsquo;s roll.
+          <Link
+            href={`/${locale}#contact`}
+            className={`${styles.ctaTitle} display`}
+          >
+            {dict.work.ctaTitle}
           </Link>
           <span className={styles.ctaArrow} aria-hidden="true">
             ↗

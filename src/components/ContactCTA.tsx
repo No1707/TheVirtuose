@@ -3,16 +3,17 @@
 import { motion } from "framer-motion";
 import { lineMask, EASE } from "@/lib/motion";
 import Timecode from "./Timecode";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./ContactCTA.module.css";
 
-const LINES = ["Let's", "roll."];
-
 export default function ContactCTA() {
+  const { dict } = useI18n();
+  const LINES = dict.contact.lines;
   return (
     <section className={`${styles.wrap} section`} id="contact">
       <div className="shell">
         <div className={styles.top}>
-          <span className="label">Get in touch</span>
+          <span className="label">{dict.contact.eyebrow}</span>
           <span className={`${styles.tc} mono tnum`}>
             <Timecode />
           </span>
@@ -43,17 +44,18 @@ export default function ContactCTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
           >
-            Tell us what you&rsquo;re making and when it needs to land. We reply
-            to every serious brief within one working day.
+            {dict.contact.lede}
           </motion.p>
 
           <div className={styles.actions}>
             <a
-              href="mailto:contact@the-virtuose.com?subject=New%20project%20—%20The%20Virtuose"
+              href={`mailto:contact@the-virtuose.com?subject=${encodeURIComponent(
+                dict.contact.subject
+              )}`}
               className={styles.emailBtn}
               data-cursor="link"
             >
-              <span className={styles.emailLabel}>Start a project</span>
+              <span className={styles.emailLabel}>{dict.contact.cta}</span>
               <span className={styles.email}>contact@the-virtuose.com</span>
               <span className={styles.arrow} aria-hidden="true">
                 ↗
@@ -71,7 +73,7 @@ export default function ContactCTA() {
                 <span className={styles.handle}>@the_virtu0se</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/alec-žiga"
+                href="https://www.linkedin.com/in/alec-zigic/"
                 target="_blank"
                 rel="noreferrer"
                 className={styles.social}

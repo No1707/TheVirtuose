@@ -29,6 +29,8 @@
 .nav.solid .link,
 .nav.solid .tc,
 .nav.solid .meta,
+.nav.solid .localeLink,
+.nav.solid .localeSep,
 .nav.solid .toggle .label {
   color: var(--bone);
 }
@@ -101,6 +103,39 @@
 @keyframes blink {
   0%, 60% { opacity: 1; }
   61%, 100% { opacity: 0.2; }
+}
+
+/* --- Language switch --------------------------------------------------- */
+/* Text rather than flag icons: a flag is a country, not a language. */
+.locale {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.localeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.localeLink {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--bone);
+  opacity: 0.45;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  padding: 0.35rem 0.1rem;
+}
+.localeLink:hover {
+  opacity: 0.85;
+}
+.localeOn {
+  opacity: 1;
+}
+.localeSep {
+  color: var(--bone);
+  opacity: 0.3;
+  font-size: var(--step--1);
 }
 
 .toggle {

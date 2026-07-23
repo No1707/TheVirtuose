@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
 import Reveal from "./Reveal";
 import Screen from "./Screen";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./About.module.css";
 
-const STATS = [
-  { k: "Since", v: "2021" },
-  { k: "Based", v: "Andorra" },
-  { k: "Films shipped", v: "120+" },
-  { k: "Avg. turnaround", v: "10 days" },
-];
-
-export default function About() {
+export default function About({
+  stats,
+}: {
+  stats: { label: string; value: string }[];
+}) {
+  const { dict } = useI18n();
+  const STATS = stats.map((s) => ({ k: s.label, v: s.value }));
   return (
     <section className={`${styles.wrap} section hair-top`} id="studio">
       <div className="shell">
@@ -27,34 +27,21 @@ export default function About() {
               transition={{ duration: 1, ease: EASE }}
             >
               {/* Swap for a real portrait: <img src="/studio/alec.jpg" ... /> */}
-              <Screen tone={20} label="Alec Žigić · Founder" bars={false} />
+              <Screen tone={20} label={dict.about.portraitLabel} bars={false} />
             </motion.div>
-            <span className={`${styles.plate} mono`}>
-              A. ŽIGIĆ — DIRECTOR / EDITOR
-            </span>
+            <span className={`${styles.plate} mono`}>{dict.about.plate}</span>
           </div>
 
           <div className={styles.copy}>
-            <span className="label">The studio</span>
+            <span className="label">{dict.about.eyebrow}</span>
             <Reveal>
-              <h2 className={`${styles.title} display`}>
-                One editor&rsquo;s obsession, scaled into a studio.
-              </h2>
+              <h2 className={`${styles.title} display`}>{dict.about.title}</h2>
             </Reveal>
             <Reveal delay={1}>
-              <p className={styles.body}>
-                The Virtuose is a boutique video production partner founded by
-                Alec Žigić — French made, based in Andorra, working with brands
-                across Europe and beyond. We keep the team small on purpose: the
-                person who directs your film is the person who cuts it.
-              </p>
+              <p className={styles.body}>{dict.about.body1}</p>
             </Reveal>
             <Reveal delay={2}>
-              <p className={styles.body}>
-                No account layers, no handoffs, no house style forced onto your
-                brand. Just a tight creative loop and an editor&rsquo;s eye for
-                the two frames that make a film land.
-              </p>
+              <p className={styles.body}>{dict.about.body2}</p>
             </Reveal>
 
             <dl className={styles.stats}>

@@ -2,20 +2,20 @@
 
 import { motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Manifesto.module.css";
 
-/** A word-by-word revealed statement. Order carries no meaning, so no numbers. */
-const WORDS =
-  "We don't make content. We direct attention — building films that hold a room, earn a second watch, and make a brand impossible to scroll past."
-    .split(" ");
-
-const EMPHASIS = new Set(["direct", "attention", "impossible", "scroll"]);
-
 export default function Manifesto() {
+  const { dict } = useI18n();
+  /** A word-by-word revealed statement. */
+  const WORDS = dict.manifesto.statement.split(" ");
+  const EMPHASIS = new Set<string>(dict.manifesto.emphasis);
   return (
     <section className={`${styles.wrap} section`} aria-label="Studio statement">
       <div className="shell">
-        <span className={`${styles.eyebrow} label`}>The premise</span>
+        <span className={`${styles.eyebrow} label`}>
+          {dict.manifesto.eyebrow}
+        </span>
         <p className={`${styles.statement} display`}>
           {WORDS.map((word, i) => (
             <span key={`${word}-${i}`} className={styles.wordWrap}>

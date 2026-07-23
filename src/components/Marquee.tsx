@@ -1,21 +1,16 @@
+"use client";
+
+import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Marquee.module.css";
 
-const CLIENTS = [
-  "Maison Lumière",
-  "Atelier V728",
-  "Kösk Studios",
-  "Vireo",
-  "Béton Brut",
-  "Halden",
-  "Studio Norr",
-  "Édition Neuf",
-];
-
-export default function Marquee() {
+export default function Marquee({ clients }: { clients: string[] }) {
+  const { dict } = useI18n();
+  const CLIENTS = clients;
+  if (!CLIENTS.length) return null;
   return (
-    <section className={styles.wrap} aria-label="Selected clients">
+    <section className={styles.wrap} aria-label={dict.marquee.aria}>
       <div className={styles.labelRow}>
-        <span className="label">Trusted by brands who sweat the details</span>
+        <span className="label">{dict.marquee.label}</span>
       </div>
       <div className={styles.track} aria-hidden="true">
         <div className={styles.run}>
