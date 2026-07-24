@@ -98,7 +98,9 @@ export default function WorkIndex({ works }: { works: Work[] }) {
                 <h2 className={`${styles.name} serif`}>{w.title}</h2>
                 <span className={styles.client}>{w.client}</span>
                 <div className={styles.tags}>
-                  <span className="label">{w.category}</span>
+                  <span className="label">
+                    {dict.work.categories[w.category] ?? w.category}
+                  </span>
                   <span className={`${styles.year} mono`}>{w.year}</span>
                 </div>
               </div>

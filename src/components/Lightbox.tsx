@@ -101,7 +101,9 @@ export default function Lightbox({
           <div className={styles.titleWrap}>
             <span className={`${styles.title} serif`}>{current.title}</span>
             <span className={`${styles.meta} mono`}>
-              {current.client} · {current.category} · {current.length}
+              {current.client} ·{" "}
+              {dict.work.categories[current.category] ?? current.category} ·{" "}
+              {current.length}
             </span>
           </div>
           <button

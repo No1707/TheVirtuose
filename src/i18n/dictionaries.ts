@@ -113,6 +113,14 @@ const en = {
       brand: "Brand Films",
       longform: "Long Form",
     },
+    /** Keyed by the exact Sanity category value, so the badge on each card and
+     *  in the lightbox is translated too. */
+    categories: {
+      Advertising: "Advertising",
+      "Social & Reels": "Social & Reels",
+      "Brand Film": "Brand Film",
+      "Long Form": "Long Form",
+    },
     projects: "projects",
     ctaLabel: "Have a project in mind?",
     ctaTitle: "Let's roll.",
@@ -238,6 +246,12 @@ const fr: typeof en = {
       social: "Social & Reels",
       brand: "Films de marque",
       longform: "Format long",
+    },
+    categories: {
+      Advertising: "Publicité",
+      "Social & Reels": "Social & Reels",
+      "Brand Film": "Film de marque",
+      "Long Form": "Format long",
     },
     projects: "projets",
     ctaLabel: "Un projet en tête ?",
