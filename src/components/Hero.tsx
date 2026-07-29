@@ -33,9 +33,9 @@ export default function Hero({
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: EASE, delay: 0.2 }}
         >
-          <span className="label">{dict.hero.eyebrow}</span>
-          <span className={styles.dot} aria-hidden="true" />
-          <span className="label">{dict.hero.since}</span>
+          <span className="label">
+            {dict.hero.eyebrow} · {dict.hero.since}
+          </span>
         </motion.div>
 
         <h1 className={`${styles.title} display`}>

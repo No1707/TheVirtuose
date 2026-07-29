@@ -10,6 +10,11 @@
 # production
 /build
 
+# sanity studio build output — rebuilt from source by `sanity deploy`,
+# so the hosted studio never reads this. Vite re-hashes every chunk on each
+# build, which made every deploy show up as dozens of file churn in git.
+/dist
+
 # misc
 .DS_Store
 *.pem

@@ -38,16 +38,7 @@
 }
 
 .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
   margin-bottom: clamp(1.2rem, 3vw, 2rem);
-}
-.dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--ash);
 }
 
 .title {
