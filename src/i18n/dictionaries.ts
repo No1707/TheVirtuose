@@ -104,7 +104,7 @@ const en = {
   work: {
     eyebrow: "Work · Selected cuts",
     title: "A glimpse.",
-    lede: "Ads, social, brand films and long-form — a cross-section of what we cut, colour and finish for brands across Europe and beyond.",
+    lede: "Ads, social, brand films and long-form — a glimpse of the work delivered to clients.",
     filterAria: "Filter by format",
     filters: {
       all: "All",
@@ -238,7 +238,7 @@ const fr: typeof en = {
   work: {
     eyebrow: "Projets · Sélection",
     title: "Un aperçu.",
-    lede: "Publicité, social, films de marque et format long — un aperçu de ce que nous montons, étalonnons et finalisons pour nos marques.",
+    lede: "Publicité, social, films de marque et format long — un aperçu des réalisations livrées aux clients.",
     filterAria: "Filtrer par format",
     filters: {
       all: "Tous",
