@@ -40,7 +40,7 @@ const en = {
     emphasis: ["build", "attention", "impossible", "scroll"],
   },
   services: {
-    eyebrow: "What we cut · 04 channels",
+    eyebrow: "What I cut · 04 channels",
     title: "Built for every runtime.",
     items: [
       {
@@ -89,7 +89,7 @@ const en = {
   contact: {
     eyebrow: "Get in touch",
     lines: ["Let's", "roll."],
-    lede: "Tell us what you're making and when it needs to land. We reply to every serious brief within one working day.",
+    lede: "Tell me what you're making and when it needs to land. I reply to every serious brief within one working day.",
     cta: "Start a project",
     subject: "New project — The Virtuose",
   },
@@ -174,7 +174,7 @@ const fr: typeof en = {
     emphasis: ["construit", "attention", "impossible", "ignorer."],
   },
   services: {
-    eyebrow: "Ce qu'on monte · 04 formats",
+    eyebrow: "Ce que je monte · 04 formats",
     title: "Pensé pour chaque durée.",
     items: [
       {
@@ -223,7 +223,7 @@ const fr: typeof en = {
   contact: {
     eyebrow: "Prendre contact",
     lines: ["On", "y va."],
-    lede: "Dites-nous ce que vous préparez et pour quand. Nous répondons à tout brief sérieux sous un jour ouvré.",
+    lede: "Dites-moi ce que vous préparez et pour quand. Je réponds à tout brief sérieux sous un jour ouvré.",
     cta: "Démarrer un projet",
     subject: "Nouveau projet — The Virtuose",
   },
