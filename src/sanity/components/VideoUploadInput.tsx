@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { set, unset, useClient, type ObjectInputProps } from "sanity";
 import { Button, Card, Flex, Stack, Text } from "@sanity/ui";
 import { apiVersion } from "../env";
@@ -62,6 +62,29 @@ function grabPoster(
 }
 
 /**
+ * Waits for a value written with `onChange` to come back through props.
+ *
+ * The Studio applies an edit locally before the server has accepted it, so a
+ * refused write still paints a finished upload card. Reading the value back is
+ * the only way to tell an applied change from a rejected one.
+ */
+function waitForValue(
+  ref: { current: VideoValue | undefined },
+  url: string,
+  timeout = 4000
+): Promise<boolean> {
+  return new Promise((resolve) => {
+    const startedAt = Date.now();
+    const tick = () => {
+      if (ref.current?.url === url) return resolve(true);
+      if (Date.now() - startedAt > timeout) return resolve(false);
+      setTimeout(tick, 120);
+    };
+    tick();
+  });
+}
+
+/**
  * Drag a video in and everything else is worked out automatically: the file is
  * stored on Sanity's CDN, its real orientation and runtime are read from the
  * file, and a poster frame is captured and uploaded alongside it.
@@ -70,12 +93,19 @@ function grabPoster(
  * separate upload key and no public upload endpoint to protect.
  */
 export function VideoUploadInput(props: ObjectInputProps) {
-  const { value, onChange } = props;
+  const { value, onChange, readOnly } = props;
   const v = value as VideoValue | undefined;
   const client = useClient({ apiVersion });
   const fileRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
+
+  // Mirrors the incoming value so the upload can read back what actually
+  // landed on the document, rather than what it optimistically set.
+  const valueRef = useRef<VideoValue | undefined>(v);
+  useEffect(() => {
+    valueRef.current = v;
+  }, [v]);
 
   const handleFile = useCallback(
     async (file: File) => {
@@ -103,6 +133,7 @@ export function VideoUploadInput(props: ObjectInputProps) {
 
         URL.revokeObjectURL(objectUrl);
 
+        setStatus("Saving…");
         onChange(
           set({
             _type: "videoAsset",
@@ -114,6 +145,18 @@ export function VideoUploadInput(props: ObjectInputProps) {
             originalFilename: file.name,
           })
         );
+
+        // `onChange` never throws: the Studio rejects a refused write on its
+        // own, well outside this try/catch. Without this check a read-only
+        // document swallows the edit and the card below still claims success.
+        if (!(await waitForValue(valueRef, videoAsset.url))) {
+          setError(
+            "The file uploaded, but the document refused the change and nothing was saved. " +
+              "This normally means the document is open read-only — check that the perspective " +
+              "selector at the top says “Drafts” rather than “Published”, and that you are not " +
+              "viewing an older revision, then add the video again."
+          );
+        }
         setStatus("");
       } catch (e) {
         setError(e instanceof Error ? e.message : "Upload failed.");
@@ -157,6 +200,7 @@ export function VideoUploadInput(props: ObjectInputProps) {
               mode="ghost"
               tone="critical"
               text="Remove"
+              disabled={!!readOnly}
               onClick={() => onChange(unset())}
             />
           </Flex>
@@ -165,9 +209,20 @@ export function VideoUploadInput(props: ObjectInputProps) {
         <Button
           mode="ghost"
           text={status || "Choose a video file"}
-          disabled={!!status}
+          disabled={!!status || !!readOnly}
           onClick={() => fileRef.current?.click()}
         />
+      )}
+
+      {/* Caught before the editor waits on a large upload that cannot be kept. */}
+      {readOnly && (
+        <Card padding={3} radius={2} tone="caution">
+          <Text size={1}>
+            This document is read-only, so a video cannot be added. Set the
+            perspective selector at the top to “Drafts” — “Published” is a
+            view-only mode.
+          </Text>
+        </Card>
       )}
 
       <input
