@@ -85,6 +85,9 @@
 .previewSticky {
   position: sticky;
   top: 18vh;
+}
+.previewFrame {
+  position: relative;
   aspect-ratio: 4 / 3;
   border: 1px solid var(--hair);
   overflow: hidden;
@@ -101,16 +104,21 @@
   opacity: 1;
   transform: scale(1);
 }
+.previewTagRow {
+  position: relative;
+  display: block;
+  height: 1.2em;
+  margin-bottom: 0.7rem;
+}
 .previewTag {
   position: absolute;
-  left: 0.9rem;
-  top: 0.9rem;
-  z-index: 4;
+  left: 0;
+  top: 0;
+  transform-origin: left center;
   font-size: var(--step--1);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--bone);
-  mix-blend-mode: difference;
+  color: var(--ash);
 }
 
 @media (max-width: 860px) {

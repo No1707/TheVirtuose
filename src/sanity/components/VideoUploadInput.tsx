@@ -61,13 +61,6 @@ function grabPoster(
   });
 }
 
-/**
- * Waits for a value written with `onChange` to come back through props.
- *
- * The Studio applies an edit locally before the server has accepted it, so a
- * refused write still paints a finished upload card. Reading the value back is
- * the only way to tell an applied change from a rejected one.
- */
 function waitForValue(
   ref: { current: VideoValue | undefined },
   url: string,
@@ -100,8 +93,6 @@ export function VideoUploadInput(props: ObjectInputProps) {
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
 
-  // Mirrors the incoming value so the upload can read back what actually
-  // landed on the document, rather than what it optimistically set.
   const valueRef = useRef<VideoValue | undefined>(v);
   useEffect(() => {
     valueRef.current = v;
@@ -146,9 +137,6 @@ export function VideoUploadInput(props: ObjectInputProps) {
           })
         );
 
-        // `onChange` never throws: the Studio rejects a refused write on its
-        // own, well outside this try/catch. Without this check a read-only
-        // document swallows the edit and the card below still claims success.
         if (!(await waitForValue(valueRef, videoAsset.url))) {
           setError(
             "The file uploaded, but the document refused the change and nothing was saved. " +
@@ -214,7 +202,6 @@ export function VideoUploadInput(props: ObjectInputProps) {
         />
       )}
 
-      {/* Caught before the editor waits on a large upload that cannot be kept. */}
       {readOnly && (
         <Card padding={3} radius={2} tone="caution">
           <Text size={1}>

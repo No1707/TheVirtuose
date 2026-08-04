@@ -14,6 +14,14 @@
   filter: saturate(0.15) contrast(1.05);
 }
 
+.contain {
+  object-fit: contain;
+}
+
+.transparent {
+  background: transparent;
+}
+
 /* --- Animated monochrome placeholder --------------------------------- */
 .placeholder {
   position: absolute;

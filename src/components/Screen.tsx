@@ -14,6 +14,8 @@ export default function Screen({
   className,
   bars = true,
   vertical = false,
+  fit = "cover",
+  transparent = false,
 }: {
   tone?: number;
   label?: string;
@@ -23,17 +25,21 @@ export default function Screen({
   bars?: boolean;
   /** Vertical 9:16 surface — orients the light sweep top-to-bottom. */
   vertical?: boolean;
+  fit?: "cover" | "contain";
+  transparent?: boolean;
 }) {
   return (
     <div
       className={`${styles.screen} ${vertical ? styles.vertical : ""} ${
-        className ?? ""
-      }`}
+        transparent ? styles.transparent : ""
+      } ${className ?? ""}`}
       style={{ ["--tone" as string]: `${tone}deg` }}
     >
       {src ? (
         <video
-          className={styles.video}
+          className={`${styles.video} ${
+            fit === "contain" ? styles.contain : ""
+          }`}
           src={src}
           poster={poster}
           autoPlay

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
 import Screen from "./Screen";
 import { useI18n } from "@/i18n/I18nProvider";
@@ -74,24 +74,42 @@ export default function Services({
 
           <div className={styles.previewCol} aria-hidden="true">
             <div className={styles.previewSticky}>
-              {SERVICES.map((s, i) => (
-                <div
-                  key={s.title}
-                  className={`${styles.preview} ${
-                    preview === i ? styles.previewOn : ""
-                  }`}
-                >
-                  <Screen
-                    tone={s.tone}
-                    label={s.title}
-                    src={previews[i]?.url}
-                    poster={previews[i]?.posterUrl}
-                  />
-                </div>
-              ))}
-              <span className={`${styles.previewTag} mono`}>
-                {SERVICES[preview].title}
+              <span className={styles.previewTagRow}>
+                <AnimatePresence initial={false}>
+                  <motion.span
+                    key={SERVICES[preview].title}
+                    className={`${styles.previewTag} mono`}
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      opacity: { duration: 0.6, ease: EASE },
+                      scale: { duration: 1.1, ease: EASE },
+                    }}
+                  >
+                    {SERVICES[preview].title}
+                  </motion.span>
+                </AnimatePresence>
               </span>
+              <div className={styles.previewFrame}>
+                {SERVICES.map((s, i) => (
+                  <div
+                    key={s.title}
+                    className={`${styles.preview} ${
+                      preview === i ? styles.previewOn : ""
+                    }`}
+                  >
+                    <Screen
+                      tone={s.tone}
+                      src={previews[i]?.url}
+                      poster={previews[i]?.posterUrl}
+                      fit="contain"
+                      bars={false}
+                      transparent
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
