@@ -33,6 +33,13 @@ export const siteSettings = defineType({
       type: "videoAsset",
     }),
     defineField({
+      name: "socialPreview2",
+      title: "Social & Reels — second clip",
+      description:
+        "Optional. Add a second reel and the two play side by side, at the same height as the landscape clips.",
+      type: "videoAsset",
+    }),
+    defineField({
       name: "brandPreview",
       title: "Corporate — hover clip",
       description: "Short landscape clip for 'Corporate'. Optional.",

@@ -13,12 +13,14 @@ const TONES = [12, 210, 26, 200];
 interface Preview {
   url?: string;
   posterUrl?: string;
+  width?: number;
+  height?: number;
 }
 
 export default function Services({
   previews = [],
 }: {
-  previews?: (Preview | null)[];
+  previews?: Preview[][];
 }) {
   const { dict } = useI18n();
   const SERVICES = dict.services.items.map((s, i) => ({
@@ -93,14 +95,31 @@ export default function Services({
                       preview === i ? styles.previewOn : ""
                     }`}
                   >
-                    <Screen
-                      tone={s.tone}
-                      src={previews[i]?.url}
-                      poster={previews[i]?.posterUrl}
-                      fit="contain"
-                      bars={false}
-                      transparent
-                    />
+                    {previews[i]?.length ? (
+                      <div className={styles.clips}>
+                        {previews[i].map((c) => (
+                          <div
+                            key={c.url}
+                            className={styles.clip}
+                            style={{
+                              ["--ar" as string]:
+                                c.width && c.height ? c.width / c.height : 16 / 9,
+                            }}
+                          >
+                            <Screen
+                              tone={s.tone}
+                              src={c.url}
+                              poster={c.posterUrl}
+                              fit="contain"
+                              bars={false}
+                              transparent
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Screen tone={s.tone} bars={false} transparent />
+                    )}
                   </div>
                 ))}
               </div>

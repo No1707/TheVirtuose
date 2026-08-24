@@ -4,19 +4,20 @@ import { works as sampleWorks, type Category, type Work } from "./works";
 export interface VideoRef {
   url?: string;
   posterUrl?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface SiteSettings {
   showreel?: VideoRef;
-  /** One optional hover clip per service, in the fixed dictionary order:
-   *  [Advertising, Social & Reels, Brand Films, Long Form]. */
-  servicePreviews: (VideoRef | null)[];
+  servicePreviews: VideoRef[][];
 }
 
 interface RawSettings {
   showreel?: VideoRef;
   advertisingPreview?: VideoRef;
   socialPreview?: VideoRef;
+  socialPreview2?: VideoRef;
   brandPreview?: VideoRef;
   longFormPreview?: VideoRef;
 }
@@ -83,7 +84,7 @@ export async function getWorks(): Promise<Work[]> {
 }
 
 export async function getSettings(): Promise<SiteSettings> {
-  const empty: SiteSettings = { servicePreviews: [] };
+  const empty: SiteSettings = { servicePreviews: [[], [], [], []] };
   if (!client) return empty;
   try {
     const raw = await client.fetch<RawSettings | null>(
@@ -95,11 +96,11 @@ export async function getSettings(): Promise<SiteSettings> {
     return {
       showreel: raw.showreel,
       servicePreviews: [
-        raw.advertisingPreview ?? null,
-        raw.socialPreview ?? null,
-        raw.brandPreview ?? null,
-        raw.longFormPreview ?? null,
-      ],
+        [raw.advertisingPreview],
+        [raw.socialPreview, raw.socialPreview2],
+        [raw.brandPreview],
+        [raw.longFormPreview],
+      ].map((list) => list.filter((v): v is VideoRef => !!v?.url)),
     };
   } catch {
     return empty;

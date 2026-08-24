@@ -19,8 +19,9 @@ export const WORKS_QUERY = `*[_type == "workList"][0].projects[]{
 
 export const SETTINGS_QUERY = `*[_type == "siteSettings"][0]{
   showreel{url, posterUrl, width, height},
-  advertisingPreview{url, posterUrl},
-  socialPreview{url, posterUrl},
-  brandPreview{url, posterUrl},
-  longFormPreview{url, posterUrl}
+  advertisingPreview{url, posterUrl, width, height},
+  socialPreview{url, posterUrl, width, height},
+  socialPreview2{url, posterUrl, width, height},
+  brandPreview{url, posterUrl, width, height},
+  longFormPreview{url, posterUrl, width, height}
 }`;
