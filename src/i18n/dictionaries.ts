@@ -14,7 +14,7 @@ const en = {
   nav: {
     work: "Work",
     services: "Services",
-    studio: "Studio",
+    about: "About",
     contact: "Contact",
     menu: "Menu",
     close: "Close",
@@ -26,11 +26,9 @@ const en = {
     tagline: "Your Video Production Partner",
   },
   hero: {
-    eyebrow: "French Made · Andorra",
-    since: "Est. Reel 2021",
-    lines: ["Video that makes", "brands look", "inevitable."],
+    eyebrow: "French Made · Based in Andorra",
+    lines: ["Your external", "video production", "partner."],
     cta: "Watch the reel",
-    lede: "An external video editing partner for brands that would rather be felt than scrolled past.",
     scroll: "Scroll",
   },
   manifesto: {
@@ -40,8 +38,7 @@ const en = {
     emphasis: ["build", "attention", "impossible", "scroll"],
   },
   services: {
-    eyebrow: "What I cut · 04 channels",
-    title: "Built for every runtime.",
+    eyebrow: "Services",
     items: [
       {
         title: "Advertising",
@@ -70,7 +67,6 @@ const en = {
     ],
   },
   about: {
-    eyebrow: "The studio",
     title: "Successful collaborations are built on clear communication.",
     intro: "Hi, I'm Alec.",
     paragraphs: [
@@ -79,7 +75,6 @@ const en = {
       "Today, my focus is on building long-term partnerships with agencies and brands. I enjoy becoming a seamless extension of a creative team, helping scale video production with consistency, reliability, and a deep understanding of each client's creative standards.",
       "I believe the best partnerships are built on trust, clear communication, and a shared commitment to producing great work. If that sounds like the way you like to work too, I'd love to hear from you.",
     ],
-    plate: "A. ŽIGIĆ — VIDEO EDITOR",
     portraitLabel: "Alec Žigić · Founder",
     stats: [
       { value: "5+", label: "Years of experience" },
@@ -89,7 +84,6 @@ const en = {
   contact: {
     eyebrow: "Get in touch",
     lines: ["Let's", "roll."],
-    lede: "Tell me what you're making and when it needs to land. I reply to every serious brief within one working day.",
     cta: "Start a project",
     subject: "New project — The Virtuose",
   },
@@ -148,7 +142,7 @@ const fr: typeof en = {
   nav: {
     work: "Projets",
     services: "Services",
-    studio: "Studio",
+    about: "À propos",
     contact: "Contact",
     menu: "Menu",
     close: "Fermer",
@@ -160,11 +154,9 @@ const fr: typeof en = {
     tagline: "Your Video Production Partner",
   },
   hero: {
-    eyebrow: "French Made · Andorre",
-    since: "Depuis 2021",
-    lines: ["Des vidéos qui rendent", "une marque", "incontournable."],
+    eyebrow: "French Made · Basé à Andorre",
+    lines: ["Votre partenaire", "de production vidéo", "externe."],
     cta: "Voir le showreel",
-    lede: "Un partenaire de montage vidéo externe, pour les marques qui préfèrent marquer les esprits que défiler dans un fil.",
     scroll: "Défiler",
   },
   manifesto: {
@@ -174,8 +166,7 @@ const fr: typeof en = {
     emphasis: ["construit", "attention", "impossible", "ignorer."],
   },
   services: {
-    eyebrow: "Ce que je monte · 04 formats",
-    title: "Pensé pour chaque durée.",
+    eyebrow: "Services",
     items: [
       {
         title: "Publicité",
@@ -204,7 +195,6 @@ const fr: typeof en = {
     ],
   },
   about: {
-    eyebrow: "Le studio",
     title: "Les collaborations réussies reposent sur une communication claire.",
     intro: "Bonjour, je suis Alec.",
     paragraphs: [
@@ -213,7 +203,6 @@ const fr: typeof en = {
       "Aujourd'hui, je me concentre sur des partenariats de long terme avec des agences et des marques. J'aime devenir le prolongement naturel d'une équipe créative et aider à faire passer la production vidéo à l'échelle, avec constance, fiabilité et une vraie compréhension des exigences créatives de chaque client.",
       "Je crois que les meilleurs partenariats reposent sur la confiance, une communication claire et une même exigence du travail bien fait. Si c'est aussi votre façon de travailler, écrivez-moi.",
     ],
-    plate: "A. ŽIGIĆ — MONTEUR VIDÉO",
     portraitLabel: "Alec Žigić · Fondateur",
     stats: [
       { value: "5+", label: "Années d'expérience" },
@@ -223,7 +212,6 @@ const fr: typeof en = {
   contact: {
     eyebrow: "Prendre contact",
     lines: ["On", "y va."],
-    lede: "Dites-moi ce que vous préparez et pour quand. Je réponds à tout brief sérieux sous un jour ouvré.",
     cta: "Démarrer un projet",
     subject: "Nouveau projet — The Virtuose",
   },

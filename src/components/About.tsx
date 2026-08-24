@@ -30,7 +30,6 @@ export default function About() {
                 className={styles.portraitImg}
               />
             </motion.div>
-            <span className={`${styles.plate} mono`}>{dict.about.plate}</span>
 
             <dl className={styles.stats}>
               {dict.about.stats.map((s) => (
@@ -43,7 +42,6 @@ export default function About() {
           </div>
 
           <div className={styles.copy}>
-            <span className="label">{dict.about.eyebrow}</span>
             <Reveal>
               <h2 className={`${styles.title} display`}>{dict.about.title}</h2>
             </Reveal>

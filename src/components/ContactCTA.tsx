@@ -61,34 +61,7 @@ export default function ContactCTA() {
           </span>
         </div>
 
-        <h2 className={`${styles.title} display`}>
-          {LINES.map((line, i) => (
-            <span key={line} className={styles.lineWrap}>
-              <motion.span
-                className={styles.line}
-                variants={lineMask}
-                custom={i}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h2>
-
         <div className={styles.grid}>
-          <motion.p
-            className={styles.lede}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
-          >
-            {dict.contact.lede}
-          </motion.p>
-
           <div className={styles.actions}>
             {CONTACTS.map((c, i) => (
               <motion.a

@@ -20,7 +20,7 @@ export default function Nav() {
   const LINKS = [
     { label: dict.nav.work, href: `/${locale}/work` },
     { label: dict.nav.services, href: `/${locale}#services` },
-    { label: dict.nav.studio, href: `/${locale}#studio` },
+    { label: dict.nav.about, href: `/${locale}#studio` },
     { label: dict.nav.contact, href: `/${locale}#contact` },
   ];
 

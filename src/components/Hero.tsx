@@ -34,7 +34,7 @@ export default function Hero({
           transition={{ duration: 1, ease: EASE, delay: 0.2 }}
         >
           <span className="label">
-            {dict.hero.eyebrow} · {dict.hero.since}
+            {dict.hero.eyebrow}
           </span>
         </motion.div>
 
@@ -70,7 +70,6 @@ export default function Hero({
             </span>
             {dict.hero.cta}
           </a>
-          <p className={styles.lede}>{dict.hero.lede}</p>
         </motion.div>
       </div>
 

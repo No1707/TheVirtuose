@@ -37,7 +37,6 @@ export default function Services({
       <div className="shell">
         <header className={styles.head}>
           <span className="label">{dict.services.eyebrow}</span>
-          <h2 className={`${styles.title} display`}>{dict.services.title}</h2>
         </header>
 
         <div className={styles.grid}>
