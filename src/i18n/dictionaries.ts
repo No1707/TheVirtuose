@@ -22,47 +22,26 @@ const en = {
     home: "The Virtuose home",
     primary: "Primary",
   },
-  preloader: {
-    tagline: "Your Video Production Partner",
-  },
   hero: {
     eyebrow: "French Made · Based in Andorra",
     lines: ["Your external", "video production", "partner."],
     cta: "Watch the reel",
     scroll: "Scroll",
   },
-  manifesto: {
-    eyebrow: "The premise",
-    statement:
-      "We don't fill feeds. We build attention — films cut to hold a room, earn a second watch, and make a brand impossible to scroll past.",
-    emphasis: ["build", "attention", "impossible", "scroll"],
-  },
   services: {
     eyebrow: "Services",
     items: [
       {
-        title: "Advertising",
-        runtime: "00:06 – 00:60",
-        line: "Spots that earn a second watch.",
-        body: "Broadcast and online films cut from your footage around a single idea — engineered to perform in the feed and hold up on a big screen.",
+        title: "Ads",
       },
       {
         title: "Social & Reels",
-        runtime: "00:07 – 00:30",
-        line: "Vertical-native, hook-first.",
-        body: "Thumb-stopping short form designed for the platform, not squeezed into it. Delivered as repeatable systems, not one-offs.",
       },
       {
-        title: "Brand Films",
-        runtime: "01:00 – 03:00",
-        line: "The film that becomes the brand.",
-        body: "Cinematic pieces that give a company a face and a feeling — the anchor asset everything else references.",
+        title: "Corporate",
       },
       {
         title: "Long Form & Podcast",
-        runtime: "20:00 +",
-        line: "Depth, cut for reach.",
-        body: "Multicam series and founder conversations, synced and edited for pace, then sliced into a month of short-form pulls from a single recording day.",
       },
     ],
   },
@@ -84,8 +63,6 @@ const en = {
   contact: {
     eyebrow: "Get in touch",
     lines: ["Let's", "roll."],
-    cta: "Start a project",
-    subject: "New project — The Virtuose",
   },
   footer: {
     tagline: "Your Video Production Partner",
@@ -98,24 +75,23 @@ const en = {
   work: {
     eyebrow: "Work · Selected cuts",
     title: "A glimpse.",
-    lede: "Ads, social, brand films and long-form — a glimpse of the work delivered to clients.",
+    lede: "Ads, social, corporate and long-form — a glimpse of the work delivered to clients.",
     filterAria: "Filter by format",
     filters: {
       all: "All",
-      advertising: "Advertising",
+      advertising: "Ads",
       social: "Social & Reels",
-      brand: "Brand Films",
+      brand: "Corporate",
       longform: "Long Form",
     },
     /** Keyed by the exact Sanity category value, so the badge on each card and
      *  in the lightbox is translated too. */
     categories: {
-      Advertising: "Advertising",
+      Advertising: "Ads",
       "Social & Reels": "Social & Reels",
-      "Brand Film": "Brand Film",
+      "Brand Film": "Corporate",
       "Long Form": "Long Form",
     },
-    projects: "projects",
     ctaLabel: "Have a project in mind?",
     ctaTitle: "Let's roll.",
     play: "Play",
@@ -129,10 +105,10 @@ const en = {
   meta: {
     title: "The Virtuose — Your Video Production Partner",
     description:
-      "A boutique video editing studio. French Made, based in Andorra. Ads, social, brand films and long-form — cut, coloured and finished for brands that want to look inevitable.",
+      "A boutique video editing studio. French Made, based in Andorra. Ads, social, corporate and long-form — cut, coloured and finished for brands that want to look inevitable.",
     workTitle: "Work",
     workDescription:
-      "Selected work from The Virtuose — advertising, social, brand films and long-form video, cut and finished for brands across Europe and beyond.",
+      "Selected work from The Virtuose — ads, social, corporate and long-form video, cut and finished for brands across Europe and beyond.",
   },
   skip: "Skip to content",
 };
@@ -150,47 +126,26 @@ const fr: typeof en = {
     home: "Accueil The Virtuose",
     primary: "Principale",
   },
-  preloader: {
-    tagline: "Your Video Production Partner",
-  },
   hero: {
     eyebrow: "French Made · Basé à Andorre",
     lines: ["Votre partenaire", "de production vidéo", "externe."],
     cta: "Voir le showreel",
     scroll: "Défiler",
   },
-  manifesto: {
-    eyebrow: "Le principe",
-    statement:
-      "On ne remplit pas des fils d'actualité. On construit de l'attention — des films montés pour tenir une salle, mériter un second visionnage, et rendre une marque impossible à ignorer.",
-    emphasis: ["construit", "attention", "impossible", "ignorer."],
-  },
   services: {
     eyebrow: "Services",
     items: [
       {
-        title: "Publicité",
-        runtime: "00:06 – 00:60",
-        line: "Des spots qui méritent un second visionnage.",
-        body: "Des films TV et web montés à partir de vos rushes autour d'une seule idée — calibrés pour performer dans le fil et tenir sur grand écran.",
+        title: "Ads",
       },
       {
         title: "Social & Reels",
-        runtime: "00:07 – 00:30",
-        line: "Pensé vertical, accroche en premier.",
-        body: "Du format court conçu pour la plateforme, pas comprimé dedans. Livré comme un système réutilisable, pas comme un coup unique.",
       },
       {
-        title: "Films de marque",
-        runtime: "01:00 – 03:00",
-        line: "Le film qui devient la marque.",
-        body: "Des pièces cinématographiques qui donnent un visage et une émotion à une entreprise — l'actif central auquel tout le reste se réfère.",
+        title: "Corporate",
       },
       {
         title: "Format long & Podcast",
-        runtime: "20:00 +",
-        line: "De la profondeur, montée pour la portée.",
-        body: "Séries multicaméra et conversations de fondateurs, synchronisées et montées pour le rythme, puis découpées en un mois de formats courts à partir d'une seule journée d'enregistrement.",
       },
     ],
   },
@@ -212,8 +167,6 @@ const fr: typeof en = {
   contact: {
     eyebrow: "Prendre contact",
     lines: ["On", "y va."],
-    cta: "Démarrer un projet",
-    subject: "Nouveau projet — The Virtuose",
   },
   footer: {
     tagline: "Your Video Production Partner",
@@ -226,22 +179,21 @@ const fr: typeof en = {
   work: {
     eyebrow: "Projets · Sélection",
     title: "Un aperçu.",
-    lede: "Publicité, social, films de marque et format long — un aperçu des réalisations livrées aux clients.",
+    lede: "Ads, social, corporate et format long — un aperçu des réalisations livrées aux clients.",
     filterAria: "Filtrer par format",
     filters: {
       all: "Tous",
-      advertising: "Publicité",
+      advertising: "Ads",
       social: "Social & Reels",
-      brand: "Films de marque",
+      brand: "Corporate",
       longform: "Format long",
     },
     categories: {
-      Advertising: "Publicité",
+      Advertising: "Ads",
       "Social & Reels": "Social & Reels",
-      "Brand Film": "Film de marque",
+      "Brand Film": "Corporate",
       "Long Form": "Format long",
     },
-    projects: "projets",
     ctaLabel: "Un projet en tête ?",
     ctaTitle: "On y va.",
     play: "Lire",
@@ -255,10 +207,10 @@ const fr: typeof en = {
   meta: {
     title: "The Virtuose — Your Video Production Partner",
     description:
-      "Studio de montage vidéo. French Made, basé en Andorre. Publicité, social, films de marque et format long — montés, étalonnés et finalisés pour les marques qui veulent marquer.",
+      "Studio de montage vidéo. French Made, basé en Andorre. Ads, social, corporate et format long — montés, étalonnés et finalisés pour les marques qui veulent marquer.",
     workTitle: "Projets",
     workDescription:
-      "Les projets de The Virtuose — publicité, social, films de marque et format long, montés et finalisés pour des marques en Europe et au-delà.",
+      "Les projets de The Virtuose — ads, social, corporate et format long, montés et finalisés pour des marques en Europe et au-delà.",
   },
   skip: "Aller au contenu",
 };

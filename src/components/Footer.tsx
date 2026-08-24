@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
               <Link href={`/${locale}/work`}>{dict.nav.work}</Link>
               <Link href={`/${locale}#services`}>{dict.nav.services}</Link>
-              <Link href={`/${locale}#studio`}>{dict.nav.studio}</Link>
+              <Link href={`/${locale}#studio`}>{dict.nav.about}</Link>
               <Link href={`/${locale}#contact`}>{dict.nav.contact}</Link>
             </div>
             <div className={styles.col}>

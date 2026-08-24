@@ -21,9 +21,9 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "advertisingPreview",
-      title: "Advertising — hover clip",
+      title: "Ads — hover clip",
       description:
-        "Short landscape clip shown when 'Advertising' is hovered. Optional. Keep it a few seconds, muted, light.",
+        "Short landscape clip shown when 'Ads' is hovered. Optional. Keep it a few seconds, muted, light.",
       type: "videoAsset",
     }),
     defineField({
@@ -34,8 +34,8 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "brandPreview",
-      title: "Brand Films — hover clip",
-      description: "Short landscape clip for 'Brand Films'. Optional.",
+      title: "Corporate — hover clip",
+      description: "Short landscape clip for 'Corporate'. Optional.",
       type: "videoAsset",
     }),
     defineField({

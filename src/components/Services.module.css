@@ -56,28 +56,6 @@
   transform: translateX(0.5rem);
 }
 
-.detail {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height var(--dur) var(--ease-out),
-    opacity var(--dur) var(--ease-out);
-}
-.row.on .detail {
-  max-height: 12rem;
-  opacity: 1;
-}
-/* Takes the mono/ash voice of the short lines it replaced. */
-.body {
-  max-width: 60ch;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.01em;
-  color: var(--ash);
-  line-height: 1.65;
-  padding-top: 1.2rem;
-}
-
 /* --- Preview column --------------------------------------------------- */
 .previewCol {
   height: 100%;
@@ -126,13 +104,5 @@
   }
   .previewCol {
     display: none;
-  }
-  /* Detail is always shown on touch — there is no hover. */
-  .row .detail {
-    max-height: 14rem;
-    opacity: 1;
-  }
-  .body {
-    padding-top: 0.8rem;
   }
 }

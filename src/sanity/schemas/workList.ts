@@ -1,9 +1,9 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 const CATEGORIES = [
-  { title: "Advertising", value: "Advertising" },
+  { title: "Ads", value: "Advertising" },
   { title: "Social & Reels", value: "Social & Reels" },
-  { title: "Brand Film", value: "Brand Film" },
+  { title: "Corporate", value: "Brand Film" },
   { title: "Long Form", value: "Long Form" },
 ];
 
