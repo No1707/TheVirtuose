@@ -12,12 +12,10 @@ export const contentType = "image/png";
  * matches the site's type. Fonts are committed to the repo so the build never
  * depends on the network.
  */
-const fraunces = readFileSync(
-  join(process.cwd(), "src/assets/Fraunces-Light.ttf")
-);
-const mono = readFileSync(
-  join(process.cwd(), "src/assets/GeistMono-Regular.ttf")
-);
+const loadFonts = () => ({
+  fraunces: readFileSync(join(process.cwd(), "src/assets/Fraunces-Light.ttf")),
+  mono: readFileSync(join(process.cwd(), "src/assets/GeistMono-Regular.ttf")),
+});
 
 const VOID = "#0a0a0b";
 const BONE = "#f2efea";
@@ -25,6 +23,7 @@ const ASH = "#8b8b90";
 const HAIR = "rgba(242,239,234,0.14)";
 
 export default function OpengraphImage() {
+  const { fraunces, mono } = loadFonts();
   return new ImageResponse(
     (
       <div

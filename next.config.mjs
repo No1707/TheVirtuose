@@ -3,6 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./src/assets/**"],
+  },
+
   async redirects() {
     return [
       // --- Legacy Adobe Portfolio URLs -----------------------------------
