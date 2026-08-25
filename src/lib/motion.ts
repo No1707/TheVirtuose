@@ -21,14 +21,3 @@ export const rise: Variants = {
     transition: { duration: 0.8, ease: EASE, delay: 0.06 * i },
   }),
 };
-
-/** Container that staggers its children. */
-export const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-
-export const fade: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.9, ease: EASE } },
-};
