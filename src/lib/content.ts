@@ -74,7 +74,7 @@ export async function getWorks(): Promise<Work[]> {
     const raw = await client.fetch<RawProject[] | null>(
       WORKS_QUERY,
       {},
-      { next: { revalidate: 60 } }
+      { cache: "no-store" }
     );
     if (!raw || raw.length === 0) return sampleWorks;
     return raw.map(toWork);
@@ -90,7 +90,7 @@ export async function getSettings(): Promise<SiteSettings> {
     const raw = await client.fetch<RawSettings | null>(
       SETTINGS_QUERY,
       {},
-      { next: { revalidate: 60 } }
+      { cache: "no-store" }
     );
     if (!raw) return empty;
     return {

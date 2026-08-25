@@ -8,6 +8,8 @@ import { getSettings } from "@/lib/content";
 import { getDictionary, isLocale } from "@/i18n/dictionaries";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

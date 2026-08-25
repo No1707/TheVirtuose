@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import { getWorks } from "@/lib/content";
 import { getDictionary, isLocale } from "@/i18n/dictionaries";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
