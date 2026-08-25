@@ -7,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // The CMS and the API are not content for search engines.
-      disallow: ["/studio", "/studio/", "/api/"],
     },
     sitemap: `${SITE}/sitemap.xml`,
   };
