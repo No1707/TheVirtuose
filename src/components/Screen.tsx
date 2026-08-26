@@ -28,6 +28,7 @@ export default function Screen({
   fit?: "cover" | "contain";
   transparent?: boolean;
 }) {
+  const fitClass = `${styles.video} ${fit === "contain" ? styles.contain : ""}`;
   return (
     <div
       className={`${styles.screen} ${vertical ? styles.vertical : ""} ${
@@ -37,9 +38,7 @@ export default function Screen({
     >
       {src ? (
         <video
-          className={`${styles.video} ${
-            fit === "contain" ? styles.contain : ""
-          }`}
+          className={fitClass}
           src={src}
           poster={poster}
           autoPlay
@@ -48,6 +47,9 @@ export default function Screen({
           playsInline
           preload="metadata"
         />
+      ) : poster ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className={fitClass} src={poster} alt="" />
       ) : (
         <div className={styles.placeholder} aria-hidden="true">
           <span className={styles.sweep} />

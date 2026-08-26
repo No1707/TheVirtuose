@@ -33,6 +33,13 @@ export default function Services({
   // `preview` keeps the last-hovered channel on screen so the preview column
   // never goes blank.
   const [preview, setPreview] = useState(0);
+  const [opened, setOpened] = useState<number[]>([0]);
+
+  const show = (i: number) => {
+    setActive(i);
+    setPreview(i);
+    setOpened((o) => (o.includes(i) ? o : [...o, i]));
+  };
 
   return (
     <section className={`${styles.wrap} section hair-top`} id="services">
@@ -47,15 +54,9 @@ export default function Services({
               <li key={s.title}>
                 <motion.button
                   className={`${styles.row} ${active === i ? styles.on : ""}`}
-                  onMouseEnter={() => {
-                    setActive(i);
-                    setPreview(i);
-                  }}
+                  onMouseEnter={() => show(i)}
                   onMouseLeave={() => setActive(null)}
-                  onFocus={() => {
-                    setActive(i);
-                    setPreview(i);
-                  }}
+                  onFocus={() => show(i)}
                   onBlur={() => setActive(null)}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +109,7 @@ export default function Services({
                           >
                             <Screen
                               tone={s.tone}
-                              src={c.url}
+                              src={opened.includes(i) ? c.url : undefined}
                               poster={c.posterUrl}
                               fit="contain"
                               bars={false}
