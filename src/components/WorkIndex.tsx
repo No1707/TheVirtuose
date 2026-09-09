@@ -87,8 +87,7 @@ export default function WorkIndex({ works }: { works: Work[] }) {
                   tone={w.tone}
                   label={w.length}
                   bars={!w.vertical}
-                  vertical={w.vertical}
-                  src={w.videoUrl}
+                  vertical={w.vertical}
                   poster={w.posterUrl}
                 />
                 {w.vertical && <span className={styles.reelBadge}>9:16</span>}

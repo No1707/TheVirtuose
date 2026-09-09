@@ -1,5 +1,10 @@
 import styles from "./Screen.module.css";
 
+const thumb = (url?: string) =>
+  url && url.includes("cdn.sanity.io/images/") && !url.includes("?")
+    ? url + "?w=800&q=70&auto=format"
+    : url;
+
 /**
  * A cinematic "screen" surface. If a real video `src` is provided it plays it
  * (muted, looping, inline); otherwise it renders an animated monochrome
@@ -40,7 +45,7 @@ export default function Screen({
         <video
           className={fitClass}
           src={src}
-          poster={poster}
+          poster={thumb(poster)}
           autoPlay
           muted
           loop
@@ -49,7 +54,7 @@ export default function Screen({
         />
       ) : poster ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={fitClass} src={poster} alt="" />
+        <img className={fitClass} src={thumb(poster)} alt="" />
       ) : (
         <div className={styles.placeholder} aria-hidden="true">
           <span className={styles.sweep} />
