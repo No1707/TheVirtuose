@@ -77,8 +77,7 @@ export default function WorkIndex({ works }: { works: Work[] }) {
           >
             <button
               type="button"
-              className={styles.cardLink}
-              data-cursor="play"
+              className={styles.cardLink}
               onClick={() => setActive(w)}
               aria-label={`${dict.work.play} — ${w.title}, ${w.client}`}
             >
@@ -86,12 +85,10 @@ export default function WorkIndex({ works }: { works: Work[] }) {
                 <Screen
                   tone={w.tone}
                   label={w.length}
-                  bars={!w.vertical}
+                  bars={false}
                   vertical={w.vertical}
                   poster={w.posterUrl}
-                />
-                {w.vertical && <span className={styles.reelBadge}>9:16</span>}
-                <span className={`${styles.idx} mono`}>{w.index}</span>
+                />
               </div>
               <div className={styles.meta}>
                 <h2 className={`${styles.name} serif`}>{w.title}</h2>

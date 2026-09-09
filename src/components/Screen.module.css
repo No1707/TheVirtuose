@@ -100,14 +100,14 @@
 .label {
   position: absolute;
   left: 0.9rem;
-  bottom: calc(7% + 0.7rem);
+  bottom: 0.7rem;
   z-index: 3;
   font-family: var(--font-mono);
   font-size: var(--step--1);
   letter-spacing: 0.14em;
-  color: var(--bone-dim);
+  color: var(--bone);
   text-transform: uppercase;
-  mix-blend-mode: difference;
+  text-shadow: 0 1px 6px rgba(6, 6, 7, 0.7);
 }
 
 @media (prefers-reduced-motion: reduce) {

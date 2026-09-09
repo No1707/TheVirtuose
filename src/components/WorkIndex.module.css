@@ -107,20 +107,6 @@
   border: 1px solid var(--hair);
   transition: border-color var(--dur) var(--ease-out);
 }
-.reelBadge {
-  position: absolute;
-  top: 0.8rem;
-  left: 0.9rem;
-  z-index: 4;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.08em;
-  color: var(--bone);
-  padding: 0.1rem 0.5rem;
-  border: 1px solid var(--hair-strong);
-  border-radius: 100px;
-  mix-blend-mode: difference;
-}
 .cardLink:hover .thumb {
   border-color: var(--hair-strong);
 }
@@ -129,15 +115,6 @@
 }
 .cardLink:hover .thumb > :global(*) {
   transform: scale(1.04);
-}
-.idx {
-  position: absolute;
-  top: 0.8rem;
-  right: 0.9rem;
-  z-index: 4;
-  font-size: var(--step--1);
-  color: var(--bone);
-  mix-blend-mode: difference;
 }
 
 .meta {
